@@ -1,0 +1,61 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Room 3" pageId="room3" mysteryId={mysteryId} backgroundImage="/assets/room3.jpg">
+
+  <div class="title">Room 3 - Franklin Reid</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">Waiting until the hall was clear, I made my way into Room 3&ndash;the quarters of Mr. Franklin Reid.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Somehow, the compact cabin had become a dumping ground for the mass of expensive equipment that otherwise was too fragile to be stowed with the rest of the luggage. Half a dozen box cameras, brass measuring instruments, and precision excavation tools had been piled into every corner.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I picked my way to the center of the room. A map lay draped across the largest crate, Reid's scratchy handwriting covering the creased surface.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">From the looks of it, he had been debating between several digsites when selecting the location of our excavation. Our site, on the south side of Teotihuacan, was just one of many candidates. Areas to the north and east had been similarly circled.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">But it was the red markings that stopped me cold. Scattered across the map in crimson ink: "Opium Den." "Poppy Field." "Gang Territory." Dozens of them dotted the landscape like a pox .</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Sweat accumulated on my brow as I thought of all the nefarious acts that must have been going on just beyond our campsite. In all the briefings we had been given prior to arriving in Teotehuacna, the camp&rsquo;s proximity to illegal activity had never once been mentioned. Tracing a finger to our campsite, I saw that the red markings were particularly concentrated precisely where we had stayed.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Wiping my forehead, I didn't know what to make of the reckless selection.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Careful not to trip, I continued my search of the room. In stark contrast to the scattered equipment, Mr. Reid&rsquo;s effects were immaculately organized. My search of his closet and nightstand yielded nothing that aroused suspicion.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Slightly discouraged, I was making for the exit when I saw a small wooden filing cabinet sitting near the door. The drawers were unlocked, and I quickly rifled through the folders. Amongst a puffed collection of handwritten notes, was a mountain of expense reciepts&ndash;along with some less than cordial correspondence letters between Mr. Reid and Mr. Stanton.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The expedition was grossly over budget. Mr. Reid expressed his acute concern over the course of many letters&ndash;at one point, even expressing his dissatisfaction with the chosen dig location. But, Mr. Stanton was relentless, insisting, with language that grew in color with each passing day, that the digging was to continue as planned. Convinced that more could be found, he demanded that efforts continue all the way up to the scheduled departure date.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">It was a side of both men I had not seen in the month I was with them. Not wanting to draw attention, I carefully replaced the files and stepped back into the hall.</span></p>
+</div>
+
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

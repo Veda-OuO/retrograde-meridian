@@ -1,0 +1,48 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Kitchen" pageId="kitchen" mysteryId={mysteryId} backgroundImage="/assets/kitchen.jpg">
+
+  <div class="title">Kitchen</div>
+  <div class="text-box">
+    <p>At the far end of the kitchen, Mrs. Lawrence was working at the sink. Her back was to me when I entered the long, tiled room.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Without her notice, I crept between the rows of stainless steel work stations, scanning the countertops for remnants of this evening&rsquo;s dinner preparations. Every surface had been wiped clean; every dish had been washed and stowed in its proper place. Her kitchen was spotless.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Tipping my head below the appliances, I found nothing but a thin layer of dust&ndash; and even less in the way of evidence.</p>
+    <p>&nbsp;</p>
+    <p>In the fridge: fresh bread, raw vegetables, and a big bowl of chili stew. Just in case, I secured the contents for further testing.</p>
+    <p>&nbsp;</p>
+    <p><strong>(Searching the Kitchen did not cost you an Investigative Hour.)</strong></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

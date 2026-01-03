@@ -1,0 +1,56 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Master Bedroom" pageId="9p" mysteryId={mysteryId} backgroundImage="/assets/9b.jpg">
+
+  <div class="title">9 - P</div>
+  <div class="text-box">
+    <p><span style="font-weight: 400;">Additional officers had arrived on scene. I called a small group of them to me, and, together, we made our way to Wesley Range&rsquo;s master bedroom. At the end of a long hall, red carpet sweeping from one end to the other, I found the room&rsquo;s towering mahogany doors unlocked.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Stepping into the dark, a dog gnashed its teeth, filling the room with a low growl. I braced for attack--several officers drew their firearms--but the dog never charged. We advanced cautiously toward the viscous noises coming from behind Mr. Range&rsquo;s desk. On tip toes, I peered over the sprawling worksurface, to find a large German Shepherd writhing in the corner of the room. In sequence, it leapt at me before tumbling backwards, as if held by a leash. Looking closer, the dog had a bed sheet tied around its collar that had been tethered to the metal pole of a nearby bookcase ladder.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">My investigations began when the beast was eventually controlled and removed from the room.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Behind the desk, a window overlooking a small lake stood slightly ajar, allowing the cool night breeze to enter the room. I closed it, pausing to study the scuff marks on the window ledge. In the corner, where the dog had been tied, an empty dinner plate sat on the floor.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Mr. Range&rsquo;s bedchambers must have been three stories tall. Books lined the outer walls, and ornate wood paneling clung to every surface. I spent a great deal of time combing through his strange assortment of effects, but I was unable to find much of interest to my investigation.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">However, on his desk, amongst a dizzying pile of papers and splattered ink, I was able to amass a substantial collection of medical information and financial statements. The old man was broke. He was in debt to the tune of some 500,000 dollars. A long string of medical tests and procedures accounted for the dire nature of his financial situation. The details of his condition were not disclosed, but there was no doubt he was seriously ill.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Amongst his financial records was a series of 6ft x 4ft paintings. In the event that I should need them, I asked Mr. Grady for his help locating them within the house.&nbsp;</span></p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src="/assets/9pNote.jpg" alt="Evidence image">
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

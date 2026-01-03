@@ -1,0 +1,146 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Introduction" pageId="intro" mysteryId={mysteryId}>
+ <style is:global>
+  body {
+    background-image: url('/assets/mainentry1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+</style>
+
+  <div class="title">Introduction</div>
+  <div class="text-box">
+    <p><strong>11:33 pm – Salem, Massachusetts</strong></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>The room was in chaos when I arrived.</p>
+    <p>&nbsp;</p>
+    <p>Three people lay flat on the lobby's hardwood floor, each with a team of medical personnel beside them. Closest to me, a young woman in a pink dress had just opened her eyes. She winced, barely conscious, saliva dripping from her mouth. Her lips moved but made no sound. Pale and disoriented, I had some doubt that the girl would live; but, with the EMTs at her side, I pressed further into the mansion's sprawling entry.</p>
+    <p>&nbsp;</p>
+    <p>Another woman lay just a body's length from the first. A swath of gray hair fanned behind her yellow jacket like a veil, and her bright green eyes were fixed on the ceiling's enormous mural— a gaudy depiction of a muscled man firing arrows at a dragon. The EMT kneeling next to her worked frantically, but she was totally still.</p>
+    <p>&nbsp;</p>
+    <p>At that moment, a stretcher flew by, and I watched as another team lifted a large, groaning man from the Billiard Room's threshold onto the wheeled device. Unlike the others, he was awake and perfectly cogent. His 300 pound frame lay huffing on the stretcher, his right arm propping himself up just enough to sip whisky from the flask he had pulled from his trouser pocket.</p>
+    <p>&nbsp;</p>
+    <p>"Get me off this thing, now!" he said, before stopping for another breathless swig. "I'm perfectly fine to walk!"</p>
+    <p>&nbsp;</p>
+    <p>On my approach, the EMT next to him went tumbling backwards, colliding with me directly. I caught him just as the man yelled, "Yea, back off you slug! You have no idea who you're messing with!"</p>
+    <p>&nbsp;</p>
+    <p>The team backed away, and with great effort his feet managed to find the floor.</p>
+    <p>&nbsp;</p>
+    <p>Walking over to him, I asked. "You wouldn't know the owner of the house, would you?"</p>
+    <p>&nbsp;</p>
+    <p>"Oh, you mean Wesley? Wesley Range? Yes, we are long-time friends."</p>
+    <p>&nbsp;</p>
+    <p>"And do you know where I could find him?"</p>
+    <p>&nbsp;</p>
+    <p>"Uggh," he said, wiping his mouth on his shirt. "I don't think anyone's seen him since that awful speech of his this afternoon. The old man rambled for nearly an hour." He paused for a moment, looking to either side, before flashing me his silver flask, "Luckily, I had this to keep the audience entertained."</p>
+    <p>&nbsp;</p>
+    <p>He giggled to himself, as I pulled out my notepad. Snapping into another voice, he asked, "And just who might you be, friend?" His eyes swept me from head to toe.</p>
+    <p>&nbsp;</p>
+    <p>"I'm Detective Dent, with the Salem Police Department. We got a call that there was some trouble up here."</p>
+    <p>&nbsp;</p>
+    <p>"Well, Detective, at least you've got that much right." he said, gesturing to the scene around us.</p>
+    <p>&nbsp;</p>
+    <p>"And what is your name?"</p>
+    <p>&nbsp;</p>
+    <p>"I'm Dale, Dale Dawson– owner of Dale's Delivery. You zip it; we ship it!"</p>
+    <p>&nbsp;</p>
+    <p>"Oh, yes, I think I've seen your trucks around town. Well, I might need you further Mr. Dawson, so please do not go anywhere."</p>
+    <p>&nbsp;</p>
+    <p>"Oh, come on, Detective. I have a business to run in the morning."</p>
+    <p>&nbsp;</p>
+    <p>"This is a potential murder scene, Mr. Dawson. No one leaves until I say. Now, tell me: if Wesley Range isn't available, who's in charge around here?"</p>
+    <p>&nbsp;</p>
+    <p>"Make no mistake– that'll be Mr. Grady. He's right over there, in the study."</p>
+    <p>&nbsp;</p>
+    <p>"Thank you, Dale."</p>
+    <p>&nbsp;</p>
+    <p>"Don't forget it, Detective– and, just be warned, the man's an insufferable snob."</p>
+    <p>&nbsp;</p>
+    <p>I nodded and stepped into the study.</p>
+    <p>&nbsp;</p>
+    <p>Mr. Grady was a man of at least 70. His eyes were quick and keen as owl's and on me from the moment I entered the firelit room. Shadows danced on the many paintings hung in brass frames, and the dying flames glistened on the tall window behind him as I walked to where he sat at a desk.</p>
+    <p>&nbsp;</p>
+    <p>His fingers were laced, resting calmly on top of a piece of paper in front him. With perfect posture, only his head moved as he waited for me to approach.</p>
+    <p>&nbsp;</p>
+    <p>I preferred suspects to make the first move, but he only smiled, with a grace and simplicity that told me I would be the one to get things started.</p>
+    <p>&nbsp;</p>
+    <p>"Mr. Grady, is it?"</p>
+    <p>&nbsp;</p>
+    <p>"It is, sir. Very good."</p>
+    <p>&nbsp;</p>
+    <p>"Mr. Dawson said you're the one in charge around here."</p>
+    <p>&nbsp;</p>
+    <p>"I am, sir. My master has gone missing, so I'm making the best of it until he returns."</p>
+    <p>&nbsp;</p>
+    <p>"And are you the one who called us?"</p>
+    <p>&nbsp;</p>
+    <p>"Yes. It seems a real mess has unfolded under my watch, doesn't it Detective?"</p>
+    <p>&nbsp;</p>
+    <p>"I have to agree. Can you tell me what happened?"</p>
+    <p>&nbsp;</p>
+    <p>"Well, I'm afraid I don't know much." His eyes never left me as he spoke. "The Master had me arrange a weekend stay for a small group of invitees. They arrived Friday evening, and things had been going smoothly– despite some additional demand on my staff– until this afternoon, when Master Range suddenly went missing."</p>
+    <p>&nbsp;</p>
+    <p>"What time was that?"</p>
+    <p>&nbsp;</p>
+    <p>"I don't know, sir. Sometime after 3 pm is the best I can offer."</p>
+    <p>&nbsp;</p>
+    <p>"Have you looked for him?"</p>
+    <p>&nbsp;</p>
+    <p>"Yes, of course. All over the house and grounds we searched, until it got dark and dinner was ready. Do you have a better idea of where he might be? Under that wood pile by the fireplace? Inside the stone walls of the cellar? Don't be ridiculous, Detective. We looked everywhere."</p>
+    <p>&nbsp;</p>
+    <p>"No, no. I'm sure you did a fine job– and I'll, of course, be taking a look for myself. So, what happened to these three in the lobby?"</p>
+    <p>&nbsp;</p>
+    <p>"Well, I couldn't say, sir. They just sort of collapsed as we were headed to the billiard room for the evening."</p>
+    <p>&nbsp;</p>
+    <p>"Hmm, is there anything else you've seen tonight? Anything that could help me?"</p>
+    <p>&nbsp;</p>
+    <p>"I've seen nothing else, sir. A butler is always busy with his duties. But, what I have done, Detective, is inscribe a list of names for you on this paper."</p>
+    <p>&nbsp;</p>
+    <p>He unfolded his hands and thrust the paper toward me saying, "I trust you'll find what you need in here. Good evening, sir."</p>
+    <p>&nbsp;</p>
+    <p>Standing from the desk, he gave the slightest bow before crossing his arms behind his back and walking into the entry.</p>
+    <p>&nbsp;</p>
+    <p>I unfolded the paper and read:</p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src="/assets/IntroNote.jpg" alt="Evidence image" class="bottom-image-style">
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Main Entry" pageId="mainentry" mysteryId={mysteryId} backgroundImage="/assets/mainentry1.jpg">
+
+
+  <div class="title">Main Entry</div>
+  <div class="text-box">
+    <p>I decided to give the entry a more thorough examination. Mr. Grady was standing alone in a corner by the door–not exactly out of the way of the EMTs–and grimacing at a pile of vomit next to the Billiard Room's door. </p>
+    <p>&nbsp;</p>
+    <p>Marla's body was no longer there, and I was informed that Angie Wells had been declared dead. Dale was pacing around the hall, intermittently asking EMTs for the time.</p>
+    <p>&nbsp;</p>
+    <p>I found little else in terms of physical evidence on my secondary sweep, and, based on the location of the vomit, I assumed it to be Dale Dawson's dinner.</p>
+    <p>&nbsp;</p>
+    <p>My plan had been to speak with him, but it was Mr. Grady who approached me first. </p>
+    <p>&nbsp;</p>
+    <p>With his eyes on the floor next to me, he said, "A tragedy, isn't it?"</p>
+    <p>&nbsp;</p>
+    <p>"Oh, yes. Mrs. Wells has passed, and who knows if Miss Barton will suffer the same fate?"</p>
+    <p>&nbsp;</p>
+    <p>"They say Miss Barton will live, she was awake and talking as they wheeled her outside, but can the same be said of the hardwood floor? For 20 years it managed to evade Dale Dawson's vile excretions. God only knows if <em>it</em> will make it to morning." </p>
+    <p>&nbsp;</p>
+    <p>"Well, I appreciate you working with us, Mr. Grady. The substance must remain undisturbed until we can get a sample for the lab."</p>
+    <p><br /></p>
+    <p>Utterly unconvinced, he lectured me on the nuances of maintaining such delicate wood as my gaze circled the busy room, eventually coming to the spot where Mrs. Wells had passed. I could still see her lying on her back, eyes staring straight ahead– and I was reminded of the ceiling's rather exotic mural. </p>
+    <p>&nbsp;</p>
+    <p>Mr. Grady was weighing the pros and cons of re-staining the antique wood when I cut in to ask, "Tell me, Mr. Grady, what is the story of the scene in this mural?"</p>
+    <p>&nbsp;</p>
+    <p>"Well, I know Master Range commissioned it personally and has told the story many times. As you can see, it depicts the famous battle between Hercules and the serpent-dragon Ladon. The beast was said to have guarded a collection of golden apples."</p>
+    <p>&nbsp;</p>
+    <p>"Apples?"</p>
+    <p>&nbsp;</p>
+    <p>"Don't ask me, sir. The story never excited me like it did Master Range. Anyways, there are a few tellings of the myth, but he favored the version where Hercules slew Ladon and gifted the golden apples to a group of nymphs."</p>
+    <p>&nbsp;</p>
+    <p>"Hmm, it's all very strange. And is your Master a scholar of ancient myth?"</p>
+    <p>&nbsp;</p>
+    <p>"Not so much. He had his favorites, the story of Ladon, first among them."</p>
+    <p>&nbsp;</p>
+    <p>"Well, very good, Mr. Grady. Thank you for your time."</p>
+    <p>&nbsp;</p>
+    <p>The buzz of activity had quieted by the time we ended our discussion. Mr. Grady flew away to prepare for tomorrow's breakfast, and I was left alone in the now quiet hall. The pile of vomit near me was the only reminder of the night's shocking events.</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

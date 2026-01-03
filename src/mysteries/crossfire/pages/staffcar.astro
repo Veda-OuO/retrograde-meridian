@@ -1,0 +1,116 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Staff Car" pageId="staffcar" mysteryId={mysteryId} backgroundImage="/assets/staffcar2.jpg">
+
+  <div class="title">Staff Car</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">Wanting to avoid awkward conversation and prying eyes, I waited for the Staff Car to empty before slipping my way inside.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The furnishings were stark and worn when compared with the rest of the train. Not a single painting hung from the sterile white walls. Brown carpet ran the length of the hallway and spilled into the lounge; it reminded me of spilled coffee or dark mud from the bottom of a farmer&rsquo;s boot.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I made a quick pass of the small lounge. A long bench ran the length of the windows on the far side, two wooden chairs facing toward it.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">On the wall nearest the entrance, I found a posted schedule tracking when each employee was on duty.</span></p>
+  </div>
+
+<div class="bottom-image">
+    <img src="/assets/StaffCarNote1.jpg" alt="Staff Car Note 1" class="bottom-image-style">
+  </div>
+
+
+
+<div class="text-box">
+<p><span style="font-weight: 400;">Making a quick note of the times, I walked deeper into the car.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Windows lined the wall to my left; to my right a series of three rooms stretched the length of the hall, each belonging to a member of the staff.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The first was the cook Gregory&rsquo;s room. It was unlocked, and I let myself inside. The floor was littered with dirty laundry, and the entire space smelled of sweat. I could hardly breathe, so I did my best to make my search quick.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">There was little of interest in the shallow closet&ndash;his entire wardrobe was lying on the floor, anyways. Under the bed, only the remnants of late night snacks and dirty dishware. </span><span style="font-weight: 400;">A wobbly nightstand sat next to the bed, its dark blue paint having faded many years ago.&nbsp;&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Inside, I found, amongst a mess of recipes and food stock records, and an overhead map of the Passenger Car. It was hand drawn. He had written the names of each guest on their respective rooms.</span></p>
+</div>
+
+
+<div class="bottom-image">
+    <img src="/assets/trainmap.jpg" alt="Train Map" class="bottom-image-style">
+  </div>
+
+
+
+<div class="text-box">
+<p><span style="font-weight: 400;">I put it in my pocket before stepping back into the hallway.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The next room belonged to Thomas. It was similarly austere. But, above the small window, a shelf for books had been hung on the wall. Titles I&rsquo;d never heard of filled the space from one end to the other; another pile of books sat by the bed. Texts on Aztec death rituals. Burial practices of the Maya. Sacrificial rites at Teotihuacan. An encyclopedia of modern Archeology.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Sifting through his remaining materials, I found a collection of pay stubs bearing Robert Stanton&rsquo;s signature amongst the dozens of hand-written notes. Each was for 15 dollars&ndash; more than my weekly salary as a police officer.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">At the bottom of the pile, my fingers met with a single key. Scratched by hand into its largest face was the number &ldquo;5&rdquo;. Thinking it might aid me in my investigation, I slipped it into my pocket.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Satisfied with my efforts, I proceeded to Adrian&rsquo;s room. It was the largest of the three. The bed was neatly made, and his clothes were organized and hung with care in the closet. A dark wooden nightstand sat beside the bed, but, opening its single drawer, I found nothing but a pack of cigarettes inside. It had been wrapped in a handkerchief and hidden in the very back of the drawer.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">On the first leg of our journey into Mexico, I remember Mr. Stanton stating in clear terms that the train was a smoke-free space&ndash;of course, Robert had lit his first cigar only moments later.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Lastly, I checked under Adrian&rsquo;s bed, finding nothing of substance.</span><span style="font-weight: 400;"> It was when I turned to leave that I saw a maintenance list of each car in the train hung above the door.</span></p>
+</div>
+
+<div class="bottom-image">
+    <img src="/assets/staffcar3.jpg" alt="staffcar3" class="bottom-image-style">
+  </div>
+
+
+
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .bottom-image {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .bottom-image-style {
+    max-width: 100%; /* Makes image responsive */
+    width: 600px; /* Set your desired width */
+    height: auto; /* Maintains aspect ratio */
+    border: 3px solid #d4a574;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+    
+    .bottom-image-style {
+      width: 90%; /* Smaller on tablets */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+    
+    .bottom-image-style {
+      width: 100%; /* Full width on mobile */
+    }
+  }
+</style>

@@ -1,0 +1,197 @@
+---
+interface Props {
+  mysteryId?: string;
+}
+// filepath: c:\Users\gregw\retrograde-meridian\src\components\Sidebar.astro
+const pagesModule = await import(`../data/pages.js`);
+const { pages, items } = pagesModule;
+const baseUrl = import.meta.env.BASE_URL;
+const { mysteryId = 'retrograde-meridian' } = Astro.props;
+---
+
+<div class="sidebar" id="sidebar">
+  <div class="counter">Investigative Hours: <span id="counter">0</span></div>
+  
+  <div class="inventory-container">
+    <div id="inventory-grid" class="inventory-grid">
+      <!-- Item images will be dynamically added here -->
+    </div>
+  </div>
+
+  <div class="link-list" id="linkList">
+    {pages.map(item => {
+      if (item.type === 'category') {
+        return <div class="category">{item.title}</div>;
+      } else if (item.type === 'link') {
+        const classes = ['nav-link'];
+        if (item.initialLocked === true) classes.push('locked');
+
+        // Adds colors for special pages
+        if (item.filename === 'exam') classes.push('special'); 
+        if (item.filename === 'whodunit' || item.filename === 'solution') classes.push('special1');
+
+
+        return (
+          <a
+            href={`/retrograde-meridian/${item.filename}`}
+            class={classes.join(' ')}
+            data-filename={item.filename}
+            id={`link-${item.filename}`}
+            data-counted={item.counted !== false ? 'true' : 'false'}
+          >
+            {item.title}
+          </a>
+        );
+      }
+    })}
+  </div>
+</div>
+
+<style>
+  .sidebar {
+    width: 280px;
+    background-color: #111;
+    color: white;
+    padding: 10px;
+    overflow-y: auto;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .counter {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    text-underline-offset: 2px;
+    background-color: #8B0000;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff6b6b;
+  }
+
+  .inventory-container {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-image: url('/assets/inventory-bg.jpg');
+    background-size: cover !important;
+    background-position: center !important;
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .inventory-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 0;
+    box-sizing: border-box;
+  }
+
+  .inventory-grid::-webkit-scrollbar { width: 6px; }
+  .inventory-grid::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 3px; }
+  .inventory-grid::-webkit-scrollbar-thumb { background: #d1a000; border-radius: 3px; }
+
+  .inventory-item {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    object-fit: contain !important;
+    border-radius: 5px;
+    border: 2px solid #d1a000;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .link-list {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  .link-list a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .link-list a:hover { background-color: #333; }
+
+  .category {
+    padding: 10px;
+    background-color: #e9b60ece;
+    color: #000000;
+    font-weight: bold;
+    border-bottom: 3px solid #d1a000;
+    margin-top: 10px;
+    text-shadow: 0 0 3px rgb(85, 85, 85);
+  }
+
+
+  /* Exam (special) – darker blue */
+  .link-list a.special { background-color: #1e3a8a !important; color:#ffffff !important; }
+  .link-list a.special:hover { background-color: #274690 !important; }
+  .link-list a.special.locked { background-color: #274690 !important; }
+  .link-list a.special.visited { background-color: #1e3a8a !important; color:#ffffff !important; }
+
+  /* Whodunit (special1) – lighter blue */
+  .link-list a.special1 { background-color: #3b82f6 !important; color:#ffffff !important; }
+  .link-list a.special1:hover { background-color: #60a5fa !important; }
+  .link-list a.special1.locked { background-color: #2563eb !important; }
+  .link-list a.special1.visited { background-color: #3b82f6 !important; color:#ffffff !important; }
+
+  .link-list a.visited { background-color: #888888; color: #000000; text-decoration: solid; }
+  .link-list a.locked { background-color: #444; color: #999; position: relative; pointer-events: none; }
+
+  .link-icon {
+    color: #FFD700 !important;
+    font-size: 24px;
+    margin-left: 5px;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar { width: 250px; transform: translateX(-100%); z-index: 1002; }
+    .sidebar.open { transform: translateX(0); }
+    .inventory-container { height: 160px; min-height: 160px; max-height: 160px; }
+    .inventory-item { width: 45px !important; height: 45px !important; min-width: 45px !important; min-height: 45px !important; max-width: 45px !important; max-height: 45px !important; }
+    .inventory-grid { gap: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .sidebar { width: 200px; }
+    .inventory-container { height: 110px; min-height: 110px; max-height: 110px; }
+    .inventory-item { width: 25px !important; height: 25px !important; min-width: 25px !important; min-height: 25px !important; max-width: 25px !important; max-height: 25px !important; }
+    .inventory-grid { gap: 20px; }
+  }
+</style>

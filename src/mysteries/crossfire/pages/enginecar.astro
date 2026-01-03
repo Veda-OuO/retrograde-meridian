@@ -1,0 +1,44 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Engine Car" pageId="enginecar" mysteryId={mysteryId} backgroundImage="/assets/staffcar2.jpg">
+
+  <div class="title">Engine Car</div>
+  <div class="text-box">
+    <p class="demoTitle">&nbsp;</p>
+    <p><span style="font-weight: 400;">I made my way through an empty Staff Car and toward the front of the train.</span></p>
+    <p>&nbsp;</p>
+    <p><strong>(Read Conductor - Adrian For Free)</strong></p>
+    <!-- Comments are visible in the HTML source only -->
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

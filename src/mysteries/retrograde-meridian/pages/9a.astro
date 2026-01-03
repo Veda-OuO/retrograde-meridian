@@ -1,0 +1,45 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="9 - A" pageId="9a" mysteryId={mysteryId} backgroundImage="/assets/9a.jpg">
+
+  <div class="title">9 - A</div>
+  <div class="text-box">
+    <p><strong>Ladon the Timeless (1902 - Friese)</strong></p>
+    <p><em><span style="font-weight: 400;">6 foot x 4 foot - oil on canvas</span></em></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">In the typical Friese style, the body of a serpent-dragon is shown coiling around itself in hyperrealistic fashion. White pillars and hanging vines encircle Ladon as he bears his shimmering teeth.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">A curious gold frame houses the dramatic scene. Visible through a series of holes, hundreds of interlocking gears turn dozens clock hands on the frames surface. The times displayed were varied and seemingly unrelated. In my investigations, I was unable to find anything of further significance.</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

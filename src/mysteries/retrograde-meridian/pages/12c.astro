@@ -1,0 +1,48 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="12 - C" pageId="12c" mysteryId={mysteryId} backgroundImage="/assets/12c.jpg">
+
+
+  <div class="title">12 - C</div>
+  <div class="text-box">
+    <p><strong>Son of Zeus (1864 - Marget)</strong></p>
+    <p><em><span style="font-weight: 400;">6 foot x 4 foot - oil on canvas</span></em></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">In strong, thick strokes, Marget shows Hercules holding the head of Ladon. The serpent-dragon&rsquo;s body lies limp in the shadow of an ancient tree. A pool of blood snaking its way to the center of the painting.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Moon and shadow are played dramatically against one another, the sheen of the painting's silver frame adding to the contrast. The frame was a collection of vertical pillars that interlocked and shifted in sync with another.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">After many attempts to manipulate the pillars in different combinations, I was satisfied there was nothing to be gained from the effort.&nbsp;</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

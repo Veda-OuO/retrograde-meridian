@@ -1,0 +1,105 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Dale Dawson" pageId="daledawson" mysteryId={mysteryId} backgroundImage="/assets/broom.jpg">
+
+
+  <div class="title">Dale Dawson</div>
+  <div class="text-box">
+   <p>I found Dale in the billiard room surreptitiously refilling his flask behind the small bar.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&ldquo;You topping up there, Mr. Dawson?&rdquo;</p>
+<p>&nbsp;</p>
+<p>He jumped in his skin. Still clutching his heart, he said, &ldquo;Jesus, Detective. You almost killed me.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;I was hoping we could speak again. I have some questions for you&ndash; and keep that flask where I can see it, please.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Oh, Detective, seriously? What&ndash; is Salem suddenly a dry county?&rdquo;&nbsp;</p>
+<p>&nbsp;</p>
+<p>He was dressed in a blue collared shirt&ndash; no tie. His armpits, forehead, and upper chest were soaked in sweat, a white bandage peeking from the small tear in his pantsleg as he shuffled to me.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Are you okay?&rdquo; I asked, gesturing to the ankle of his black dress pants.</p>
+<p>&nbsp;</p>
+<p>&ldquo;Yes. I&rsquo;m fine. Just a little clumsy on the stairs this evening.&rdquo;</p>
+<p>&nbsp;</p>
+<p>He fidgeted with a billiard ball in his left hand as we spoke.</p>
+<p>&nbsp;</p>
+<p>&ldquo;You&rsquo;ve known Mr. Range for a while?&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Yes, long before this place was built.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;He has very specific tastes, it seems.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Yes. A fascination with old myths, particularly some Hercules fable&ndash; that&rsquo;s what all the dragon, nymph, and golden apple stuff is about. What an expense it must have been to procure such specific furnishings.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;What do you mean?&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Have you not seen the bedrooms? Mine has a flower pot shaped like a dragon sitting by one of the windows. The thing must be 3 feet tall!. And I can tell you this, Detective: it weighs hundreds of pounds. I spent all night dreaming of the small fortune it must have cost to deliver.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Hmm, very strange. Mr. Range is quite a character.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;He is. I was telling Angie about the pot in my room, and she said they had an equally puzzling dragon figurine in theirs.&rdquo;</p>
+<p><br /><br /></p>
+<p>&ldquo;Interesting. I may want to take a look for myself at some point. Switching topics for a minute, Mr. Dawson, I remember that you mentioned a meeting with Mr. Range this afternoon; tell me about that. What was the topic of discussion?&rdquo;</p>
+<p>&nbsp;</p>
+<p>He laughed a little, tugging at the collar of his shirt.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>&ldquo;I couldn&rsquo;t really say, Detective. The old man is famous for his eccentric ramblings&ndash; and ramblings can become unintelligible very quickly, when I get thirsty&hellip; if you know what I mean.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;You expect me to believe you remember nothing of the one hour meeting?&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Well, I don&rsquo;t remember much. What I can say is that it started with business. Mr. Range said that we had been called here for an opportunity&ndash; something about unique skills and the like.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;He never elaborated?&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;He didn&rsquo;t want to. I gathered that he was looking for our help, but he only said that it was an urgent matter and that he&rsquo;d eventually speak to us individually. I never got that chance with him.&rdquo;</p>
+<p>&nbsp;</p>
+<p>The liquid sloshed in his flask as he took another big drink and sighed.</p>
+<p>&nbsp;</p>
+<p>&ldquo;Did anyone speak with him in private?&rdquo;&nbsp;</p>
+<p>&nbsp;</p>
+<p>&ldquo;I swear I&rsquo;m no snoop, Detective, but I do remember seeing Allen stay behind to speak with Mr. Range alone.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;I see. Anything else you can tell me about your fellow guests?&rdquo;</p>
+<p><br />&ldquo;I&rsquo;d never seen them before this weekend. Most seem like normal, boring people&ndash; though, my time with Angie has been quite fun. She's a fountain of gossip, Detective, and incredibly unhappy with her husband. There was much mention of some funny business with Fred's casino financials, but, if you ask me Detective, I think Angie suspects another woman. She removed her wedding ring this morning! So, sensing her mood, I generously shared the contents of my flask with here-- but I think everyone had a sip or two at some point during the meeting.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;Was anyone ill after the meeting?&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;No, and neither was I.&rdquo;</p>
+<p>&nbsp;</p>
+<p>&ldquo;I&rsquo;ll be taking that whisky bottle for evidence.&rdquo;&nbsp;</p>
+<p><br />He rolled his eyes, taking one last swig, and dropped it into my evidence bag.</p>
+<p>&nbsp;</p>
+<p>&ldquo;Thank you for your time Mr. Dawson.&rdquo;</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

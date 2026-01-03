@@ -1,0 +1,28 @@
+---
+// filepath: src/mysteries/crossfire/pages/_layout.astro
+import BaseLayout from '../../../layouts/BaseLayoutCrossfire.astro';
+
+interface Props {
+  title: string;
+  pageId: string;
+  mysteryId: string;
+  backgroundImage?: string;
+}
+
+const { title, pageId, mysteryId, backgroundImage } = Astro.props;
+---
+
+<BaseLayout title={title} pageId={pageId}>
+  <slot />
+</BaseLayout>
+
+<style is:global set:html={backgroundImage ? `
+  body {
+    background-image: url('${backgroundImage}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+` : ''}></style>

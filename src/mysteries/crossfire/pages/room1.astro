@@ -1,0 +1,50 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Room 1" pageId="room1" mysteryId={mysteryId} backgroundImage="/assets/room1.jpg">
+
+  <div class="title">Room 1 - Charles Pearson</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">There was a small gathering in the nearby Passenger Car Lounge, but I ducked into Charles Pearson&rsquo;s room unnoticed.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">His effects were arranged immaculately. The shirts hung in the closet were sorted by color and looked to be freshly pressed. Under the bed, two pairs of recently-shined dress shoes had been stowed alongside the comforter, which he had neatly folded and placed beside them.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">On the nightstand, sitting atop a brown folder, a purple heart was displayed in a modified picture frame. Heavier than expected, I moved it aside to examine the contents of the folder. Inside, a dozen newspaper clippings had been carefully cut and stored. Flipping through them, each told of criminal activity proximate to our campsite at Teotihuacan. Most of the articles were in Spanish, but I knew enough to decipher the basic facts of each story. All but one spoke of drug activity. From my own investigations in the US, I knew opium sales were surging. It seemed that the Mexican authorities were having problems of their own when it came to the production and distribution of the substance. Gang violence was rising, or so the articles claimed, and a few excavation sites had even been ransacked or overtaken by drug activity in recent months.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I returned the articles to the folder and replaced the picture frame on top of it.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Sifting through the drawers below, I found a small notebook. On the header of the only page that had been written was the name E. Brooks. Just under the name was a list of dates and times. Most of them had been logged while we were still in Teotihuacan. They were all recorded late at night, between the hours of 11pm and 2 am. Three or four of the most recent logs must have been from our time on the train.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I put the notebook in my pocket and turned to leave. But before I did, I lifted Charles&rsquo; pillow. There, a twelve inch buoy knife lay, naked, without a sheath. My pulse quickened. Knowing the military man could be back at any minute, I carefully replaced the pillow and slipped away without disturbing the weapon.</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

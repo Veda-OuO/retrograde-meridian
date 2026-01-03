@@ -1,0 +1,54 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="PrE - 1" pageId="pre1" mysteryId={mysteryId} backgroundImage="/assets/pre1.jpg">
+
+  <div class="title">PrE - 1</div>
+  <div class="text-box">
+    <p><span style="font-weight: 400;">Key To The Bird Room Closet:</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Mrs. Wells&rsquo;s key fit snugly into the brass lock. Opening the closet door, I found a small collection of black padded cases strewn across the floor. The one closest to me lay open, its contents fully exposed. On top of the grey foam core, four small ivory tusks had been carefully arranged. I had no doubt the items were highly illegal.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Hanging on both sides of the closet, a half dozen of Mrs. Wells&rsquo;s dresses made navigation of the narrow space difficult, but I examined each of the remaining cases in turn. They were locked, and, judging by their weight, all but one was full.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">On the floor, a note read:</span></p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src="/assets/pre1Note.jpg" alt="Evidence image">
+  </div>
+
+  <div class="text-box">
+    <p><strong>(Searching this location did not cost an&nbsp;Investigative Hour.)</strong></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

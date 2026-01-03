@@ -1,0 +1,405 @@
+/* ==========================================================================
+   Global and Game Page Styles
+   ========================================================================== */
+
+/* Reset styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: Georgia, sans-serif;
+  height: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+/* Game Page Text Box Styles */
+.text-box,
+.secondary-text-box {
+  background-color: rgba(209, 209, 209, 0.925);
+  color: rgb(0, 0, 0);
+  padding: 2rem;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  max-height: calc(100vh - 200px);
+  position: relative;
+  z-index: 1;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 85%;
+}
+
+.case-title {
+  font-family: 'Special Elite', cursive; /* or any font you prefer */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+/* Game Page Banner */
+.banner {
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  padding: 1rem 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  text-align: center;
+  font-size: 1.125rem;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.banner span {
+  display: inline-block;
+  max-width: calc(100% - 100px); /* Adjusted for single button */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Banner buttons container */
+.banner-buttons {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* For smaller screens, adjust the layout */
+@media (max-width: 480px) {
+  .banner {
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
+  
+  .banner span {
+    max-width: calc(100% - 80px); /* Adjusted for single button */
+    font-size: 1rem;
+  }
+  
+  .banner-buttons {
+    right: 10px;
+  }
+  
+  .home-button {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.container {
+  display: flex;
+  min-height: calc(100vh - 50px);
+  padding-top: 50px;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 280px; /* This matches the sidebar width */
+  padding: 20px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+    margin-top: 10px;
+  }
+}
+
+
+
+/* Game Page Menu Toggle */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 10px;
+  z-index: 1001;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+/* Bottom Image Styling */
+.bottom-image {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.bottom-image-style {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* Game Page Background Image */
+.page-background {
+  background-image: var(--page-background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  height: 100%;
+}
+
+/* Media Queries for Game Pages */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .text-box,
+  .secondary-text-box {
+    max-width: 100%;
+  }
+}
+
+/* Media query for tablets and smaller laptops */
+@media (min-width: 790px) and (max-width: 1300px) {
+  .text-box,
+  .secondary-text-box {
+    max-width: 100%;
+  }
+}
+
+
+
+
+/* ==========================================================================
+   Scoped Landing Page Styles
+   ========================================================================== */
+
+/* .landing-page {
+  font-family: 'Inter', sans-serif;
+  background-image: url('/assets/rules.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(233, 232, 232);
+  position: relative;
+}
+
+.landing-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.landing-page header {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.landing-page .logo {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.landing-page nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.landing-page nav a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.landing-page nav a:hover {
+  color: #ffc107;
+}
+
+.landing-page .menu-toggle {
+  display: none;
+}
+
+.landing-page main {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.landing-page h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #f8f8f8;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.landing-page p.intro {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  color: #c7c7c7;
+}
+
+.landing-page .case-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+  padding: 0 1rem;
+}
+
+.landing-page .case-box {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.landing-page .case-box:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.landing-page .case-box a {
+  display: block;
+  text-decoration: none;
+}
+
+.landing-page .case-image {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+} */
+/* ==========================================================================
+   Game Page Main Content Area
+   ========================================================================== */
+
+.main {
+  margin-left: 280px; /* Pushes content to the right of the sidebar */
+  flex-grow: 1;
+  padding: 20px;
+  position: relative;
+  min-height: calc(100vh - 50px);
+  background-color: rgba(255, 255, 255, 0.01); 
+  z-index: 0; 
+}
+
+/* On mobile, the sidebar is hidden, so we remove the margin */
+@media (max-width: 768px) {    
+  .main {
+    margin-left: 0;
+    padding: 10px;
+  }
+}
+
+/* Add these animations for the event box */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+.event-box h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.event-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.event-box li {
+  margin-bottom: 5px;
+}
+
+.event-box .close-event-box:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.home-button {
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.home-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Sidebar footer with reset button */
+.sidebar-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #444;
+  text-align: center;
+}
+
+.sidebar-reset {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #8B0000;
+  color: white;
+  border: 2px solid #ff6b6b;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  font-family: Georgia, serif;
+}
+
+.sidebar-reset:hover {
+  background-color: #a00000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-reset:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,57 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Room 4" pageId="room4" mysteryId={mysteryId} backgroundImage="/assets/room4.jpg">
+
+  <div class="title">Room 4 - Emilia Brooks</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">Room 4 was just off the entrance to the Dining Car. With little time to waste, I entered through an unlocked door.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The room had been turned upside down.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Emilia&rsquo;s bed lay on its side, thrown against the western wall like a heap of scrap metal. A blue comforter was spread across the floor in the center of the room. Dozens of white fabric squares&ndash;the remains of what had once been her bed sheets&ndash; lay on top of it.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">What could be the meaning of this chaos?</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Poking my head into the closet, her nightstand had been shoved inside. A pry bar rested against the wall with a bag of nails sitting next to it.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Turning from the closet to face the center of the room, I saw them: sitting at one end of the comforter were the three missing artifacts. The ritual mask has been split in two, as if peeled like a banana. What had been described as a solid stone calendar had been hollowed out and now lay empty on the blanket. The clay jar, which had been sealed with wax, was open and tipped on its side.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">My thoughts raced as I knelt to take a closer at the artifacts. Each had traces of dark, sticky resin with them; a similar residue was found on the blanket.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Just above a pile of Emilia&rsquo;s clothes, a small, black safe jutted from the wall. Jiggling the handle, I found it to be securely locked. </span></p>
+
+
+
+</div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

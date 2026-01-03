@@ -1,0 +1,89 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Mrs. Stanton" pageId="mstanton" mysteryId={mysteryId} backgroundImage="/assets/passengercar.jpg">
+
+  <div class="title">Mrs. Stanton</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">I rounded the corner of the Passenger Car&rsquo;s upper hall to find Mrs. Stanton dabbing at the floor in front of Room 4 with a white handkerchief.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;Oh, well hello there, Mrs. Stanton. Is something the matter?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;Detective! Oh..&rdquo; she said, stumbling over her words. She slipped a handkerchief inside her pocket while she was standing and continued, &ldquo;No, I&rsquo;m fine. Thank you&hellip;How are you?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I walked to stand next to her. She was a woman of forty, with a mop of tight blonde curls that fell down the sides of her face. Tonight, her usually meticulous makeup had started to run, revealing deep hollows beneath her eyes.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">We traded cautious smiles as I answered, &ldquo;I&rsquo;m alright, thank you. What were you doing there, Mrs. Stanton?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">She hesitated, &ldquo;Oh, just wiping up a spill that I had noticed earlier, Detective&hellip;is there something wrong with that?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;Not by the letter of the law, I suppose. What was spilled?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;Wine, I think.&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I stepped toward her with my hand out, gesturing for her to show me the handkerchief that I knew to still be in her pocket. But her small feet shuffled backwards, maintaining the space between us.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;Come now, Mrs. Stanton. Show me the handkerchief.&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;Detective, you must be crazy.&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">She kept one hand jammed in her pocket as she edged past me in the narrow hall. When her jacket brushed against mine, her hand pulled partially free. I caught a glimpse of white fabric&ndash;the handkerchief, stained with dark red. Two keys tumbled from the same pocket and clattered to the floor.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I bent quickly, retrieving them before she could stop me. Turning them in my hands, one read &ldquo;4&rdquo;, the number embossed on the largest face of the key; the other read &ldquo;5&rdquo;.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Clearly agitated, she tried to move past me down the hall, but I stepped in her way, saying, &ldquo;I have some additional questions for you, Mrs. Stanton. Please don&rsquo;t go anywhere.&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;I must be on my way, Detective. Let me through.&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">I didn&rsquo;t budge, asking instead, &ldquo;Where were you last night?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;I spent the night in my room. Where else would I have been?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;What about when you heard the shots?&rdquo;&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Before I had finished the sentence, she had slipped beyond my reach with a sudden shuffle.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Now free of me, she turned and replied while continuing down the hall, &ldquo;I never left my room. Robert left me there all alone. I was scared.&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">It was getting difficult to hear her as she continued to walk away.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;No one else saw you tonight? Just Robert?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">&ldquo;That&rsquo;s right, Detective. I was sick and didn&rsquo;t leave.&rdquo;&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Raising my voice to reach her halfway down the hall, &ldquo;What was the cause of your illness, Mrs. Stanton?&rdquo;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Just before rounding the corner, she spat, &ldquo;</span><em><span style="font-weight: 400;">Robert</span></em><span style="font-weight: 400;">.&rdquo;</span></p>
+
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

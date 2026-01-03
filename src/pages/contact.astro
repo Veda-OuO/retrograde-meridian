@@ -1,0 +1,154 @@
+---
+// filepath: c:\Users\gregw\retrograde-meridian\src\pages\contact.astro
+import LandingLayout from '../layouts/LandingLayout.astro';
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<LandingLayout 
+  title="Contact | With the Candlestick Mysteries"
+  description="Contact the creators of With the Candlestick Mysteries with your feedback, bug reports, or questions."
+  backgroundImage={`/assets/birdroom.jpg`}
+>
+  <h1>Contact Us</h1>
+  
+  <div class="content-box">
+    <p class="intro">What did you think of the game? Any recommendations? Catch any typos or bugs? I'd love to hear from you.</p>
+  
+    <div class="contact-form-container">
+      <form action="https://formspree.io/f/movldjyq" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="_replyto" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <!-- Optional: redirect on success -->
+        <input type="hidden" name="_next" value="https://withthecandlestickmysteries.com/thankyou.html" />
+
+        <!-- Optional: honeypot spam trap -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <button type="submit" class="contact-button">Send Message</button>
+      </form>
+    </div>
+  </div>
+</LandingLayout>
+
+<style>
+  h1 {
+    font-family: 'Special Elite', 'Courier New', monospace;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #f8f8f8;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .intro {
+    font-family: 'Special Elite', 'Courier New', monospace;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: center important!;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+  }
+
+  .content-box {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contact-form-container {
+    max-width: 700px;
+    margin: 30px auto;
+  }
+
+  form {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  input, textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background: rgba(51, 51, 51, 0.8);
+    color: white;
+    resize: vertical;
+  }
+
+  textarea {
+    min-height: 150px;
+  }
+
+  .contact-button {
+    background: #8B0000;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .contact-button:hover {
+    background: #a30000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .contact-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    form {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .contact-button {
+      width: 100%;
+    }
+  }
+</style>

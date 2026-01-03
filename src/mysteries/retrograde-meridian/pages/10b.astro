@@ -1,0 +1,79 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="10 - B" pageId="10b" mysteryId={mysteryId} backgroundImage="/assets/10b.jpg">
+
+  <div class="title">10 - B</div>
+  <div class="text-box">
+    <p><strong>Garden of Hesperides (1876- Lumien)</strong></p>
+    <p><em><span style="font-weight: 400;">6 foot x 4 foot - oil on canvas</span></em></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Within a thick golden frame, three nymphs sat around a blooming rose bush. One plucked a flower from amongst the billowing green leaves, the others were lying in the grass, gazing into a soft blue sky.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">The frame itself was strong and peculiar. On either side of the painting, three golden apples rested, gleaming, within the pairs of nymph hands&ndash; an additional pair holding a single apple at the top of the frame. The apples were small, no more than two inches wide, and I was poking at one when an unsettled Mr. Grady stepped next to me.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;Where on earth did you find those, Detective?&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;What?&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;The apples, of course! They&rsquo;ve never been there before!&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;Oh, how curious. I found them like this. Aren&rsquo;t they stunning?&rdquo; I said, as I ran my finger down one of the apples&rsquo;s glistening curves, &ldquo;You&rsquo;re quite sure they are a recent addition? Maybe you&rsquo;ve just been too busy to take notice.&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;I have passed this painting every day for the last 20 years, Detective. You insult me.&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;Hmm. Someone put them here?&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;I have </span><em><span style="font-weight: 400;">no</span></em><span style="font-weight: 400;"> doubt! The frame is usually an eye sore, and all the little fingers are a nightmare to clean, and&hellip;&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">As he spoke, I pressed firmly down on one of the apples provoking a thunderous, mechanical click that was so loud it stopped Mr. Grady mid-sentence.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">The officers around me drew closer as I pressed the apples, one by one, each tilting down against the frame and locking into place at my touch. It was only when I had manipulated all seven that the painting swung inward, revealing a hidden room behind.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Too dark to see, I took a lighter from my pocket and stepped through the frame&rsquo;s golden threshold. In front me, a tall man in a green suit&ndash;wispy salt and pepper hair spilling over his brow&ndash;lay cowering on the floor. As I stepped forward, he rose to his knees and reached for a nearby candlestick.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;Don&rsquo;t move another inch, Mr. Wells. We&rsquo;ve been looking for you.&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">He stopped, dropping his hands in his lap. Black hard case boxes were stacked on his left. To his right, another lay open on the floor, two rhino horns resting atop its soft, padded interior.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;My, my&hellip; you&rsquo;ve been a busy man. You packing some souvenirs for yourself?&rdquo; I said, raising the lighter above my head to reveal the entirety of the room.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">The hidden space was narrow but long and stuffed full of exotic memorabilia&ndash; all of it highly illegal. Behind Mr. Wells, tiger, rhino, and elephant hides had been piled from floor to ceiling. Hung on the walls were dozens of paintings, which, from my recollection of the newspaper headlines, I recognized as stolen from museums across Europe.&nbsp; Drugs, firearms, and precious jewels were scattered on top of the cabinets that lined the length of the chamber.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;I see you&rsquo;ve found the exploits of Mr. Range&rsquo;s worldly travels.&rdquo;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">He said nothing.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">&ldquo;Get on your feet, Fred Wells. You&rsquo;re coming with us.&rdquo;</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

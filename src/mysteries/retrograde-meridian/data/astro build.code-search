@@ -1,0 +1,14 @@
+# Query: astro build
+# ContextLines: 1
+
+2 results - 2 files
+
+package.json:
+  6      "dev": "astro dev",
+  7:     "build": "npx astro build",
+  8      "preview": "astro preview",
+
+.github\workflows\deploy.yml:
+  29        - name: Build
+  30:         run: npx astro build
+  31        

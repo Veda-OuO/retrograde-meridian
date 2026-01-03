@@ -1,0 +1,40 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Bird Room" pageId="birdroom" mysteryId={mysteryId} backgroundImage="/assets/birdroom.jpg">
+
+
+  <div class="text-box">
+    <p>Walking down a lavish corridor lined with plants and exterior windows, I found the dark wood threshold of the Bird Room. Jungle leaves and tropical bird wings splashed outward from the door's surface, a long gold handle weaving its way free of the scene.</p>
+    <p>&nbsp;</p>
+    <p>The door had no lock, and, after calling for Mr. Wells–to no reply–I let myself in.</p>
+    <p>&nbsp;</p>
+    <p>The peacock feather curtains had been thrown open such that the faint glow of the moon provided just enough light to navigate the room. By the door, a large brown suitcase was packed, as if ready to go. Reading the tag, I learned it belonged to Fred Wells.</p>
+    <p>&nbsp;</p>
+    <p>I unlatched the case and pulled it open just enough to see the mess of wadded clothing inside. Searching the inner pockets, I found a puzzling note:</p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src="/assets/BRNote.jpg" alt="Evidence image" class="bottom-image-style">
+  </div>
+  
+  <div class="text-box secondary-text-box">
+    <p>Then, stepping carefully over the shaggy green carpet, I noticed Mrs. Wells's collection of beauty products and wedding ring on the nightstand beside the purple canopied bed.</p>
+    <p>&nbsp;</p>
+    <p>Atop the desk that faced the window, sat a pen and pad of letter paper. Stamped lightly along the paper's bottom edge was a line of trees. A parrot flapped its wings in the left corner, and a toucan sang in the right.</p>
+    <p>&nbsp;</p>
+    <p>I searched the desk drawers to find them empty. The dresser was full of Mrs. Wells's effects, but I found nothing belonging to Fred.</p>
+    <p>&nbsp;</p>
+    <p>As I was turning to leave, I noticed a porcelain dragon figurine that sat on a pedestal against the inner wall. It was tipped over, and the fragile wings had been shattered to expose the empty inner chamber.</p>
+    <p>&nbsp;</p>
+    <p>Before exiting into the hall, I tried the door to the closet but found it to be locked.</p>
+
+  
+  </div>
+</Layout>

@@ -1,0 +1,56 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="4 - P" pageId="4p" mysteryId={mysteryId} backgroundImage="/assets/mflora.jpg">
+
+  <div class="title">4 - P</div>
+  <div class="text-box">
+    <p>Three rooms were arranged at the end of the mansion's Servant's Wing. It was dark and I had to feel for the name plates beside each threshold. Mrs. Lawrence's was room 4 - P, and, when I entered, the door was unlocked.</p>
+    <p>&nbsp;</p>
+    <p>I tried to be quick and respectful of her things, no doubt making some noise in the process; but her room was tidy from top to bottom. The plain bed was made without a single crease in the sheets, and even the articles within her dresser--brushes, linens, and her work uniforms--were carefully stowed.</p>
+    <p>&nbsp;</p>
+    <p>On the wall above her bed was a picture of a young Mrs. Lawrence, her arms around a gaunt man, not much older than her. I assumed him to be her husband.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Mr. Range stood off to one side as well, leaning on a pair of large elephant tusks, smiling and showing off for the camera. I did not recognize the location, but, behind the subjects, a jungle treeline sprawled high into the sky and above the camera frame.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>At that moment, as I studied Mr. Range's perhaps illegal prize, I heard the click of shoes echo down the stiff, woodpaneled corridor. Expecting Mrs. Lawrence, I left the room and stepped into the hall to greet her. But, instead of finding the elderly woman, the dark silhouette of a man filled the narrow hall. He stopped in his tracks the second he saw me.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>"What are you doing down here? Identify yourself!" I yelled.</p>
+    <p>&nbsp;</p>
+    <p>Without a moment's hesitation, he turned and ran the other way, slamming the door to the Servants' Wing before I could study his appearance.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>By the time I reached the door myself, he was gone.</p>
+    <p>&nbsp;</p>
+    <p>Too thin to be Mr. Dawson and too tall to be Mr. Grady, I wondered who the visitor could have been.</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Angie Wells" pageId="angiewells" mysteryId={mysteryId} backgroundImage="/assets/awells.jpg">
+
+  <div class="title">Angie Wells</div>
+  <div class="text-box">
+    <p>The woman in the yellow jacket was identified as Angie Wells– wife of Fred Wells, owner of the Salem Casino– and an avid bird watcher.</p>
+    <p>&nbsp;</p>
+    <p>After their failed attempts to resuscitate, the EMTs had pronounced her dead on scene.</p>
+    <p>&nbsp;</p>
+    <p>She was still lying in the hall, her body untouched, when I knelt next to her for a more thorough examination. Searching the pockets of her jacket I found a small bag of pills, a handful of used tissues, and a slender, brass key <strong>(Pr-1)</strong>.</p>
+    <p>&nbsp;</p>
+    <p>Her cheeks were pale and cold, like her fingers. I held them in my hand, examining them for signs of a struggle. She had a spiral platinum band on her left pinky, a gold ring on the index finger of her right, but no wedding ring.</p>
+    <p>&nbsp;</p>
+    <p>In my discussions with the EMTs, the leading theory was poison.</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Room 4 Wall Safe" pageId="la-2" mysteryId={mysteryId} backgroundImage="/assets/la2.jpg">
+
+  <div class="title">Room 4 Wall Safe</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">I approached the safe, its surface gleaming under the dim light. The combination dial was set to 0-0-0, but I knew that wouldn’t be the final code.</span></p><p><span style="font-weight: 400;">Opening the small safe, inside I found a small notebook and an unsealed envelope.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Within the notebook, Emilia had made a series of short notes, each appeared to be written in some kind of code. It was illegible to me.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">However, flipping to the final written page, I saw that she had written some sort of journal entry.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">No date, but I read:</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">My hands shake as I weigh and pack his resin. It will not be found&hellip; but will I?&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">He has promised to leave me for dead, somewhere deep in the surrounding jungle, if I refuse his orders.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Even in my rare time amongst the others, there is no one to call friend&ndash;no one to ask for help.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">He has made himself my world, and, while I thank god every day he does not touch me, I cannot bear it much longer.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Mother, forgive me for what I do!&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">God forgive me!</span></p>
+</div>
+
+
+<div class="text-box">
+<p><span style="font-weight: 400;">Turning to the letter, I pulled the folded paper from the envelope--addressed to somewhere in Juarez&ndash;and read:</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Dear Mother,</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The devil you spoke of boards tonight, and by the time you receive this the deal will have been made.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">It will not take long before R knows&ndash;there is no time to put everything back in good order. What I have stolen, he will not forgive.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Pray that I find peace in some corner of the world where even he cannot find me.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">May we see each other again one day! Hold on, mother. Help is coming.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">All of my love,</span></p>
+<p><span style="font-weight: 400;">Emilia</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

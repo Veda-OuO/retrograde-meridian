@@ -1,0 +1,45 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Something" pageId="something" mysteryId={mysteryId} backgroundImage="/assets/3p.jpg">
+
+
+  <div class="title">3 - P</div>
+  <div class="text-box">
+    <p>The servants&rsquo; rooms were at the end of a lonely wing on the first floor&ndash; far away from the action in the main entry.</p>
+    <p>&nbsp;</p>
+    <p>Walking softly, I approached the door labeled &ldquo;3 - P&rdquo; in an attempt to search Flora&rsquo;s room. I heard the sound of a young woman crying inside.</p>
+    <p>&nbsp;</p>
+    <p><strong>(Read the People Tab &ldquo;Miss Flora - Housekeeper.&rdquo; This location did not cost an Investigative Hour.)</strong></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

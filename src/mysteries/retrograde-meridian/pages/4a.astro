@@ -1,0 +1,47 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Something" pageId="something" mysteryId={mysteryId} backgroundImage="/assets/4a.jpg">
+
+  <div class="title">4 - A</div>
+  <div class="text-box">
+    <p><strong>Tree of the Serpent (1922 &ndash; Gradill)</strong></p>
+    <p><em>6 foot x 4 foot - oil on canvas</em></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">The painting depicts an ancient tree, its hundreds of branches sprawling upward into a clear blue sky. In the shadows, a serpent slithers amongst the leaves.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">The brass frame housing the painting was adorned with dozens of rotatable leaves and branches.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">A team of us moved the bits of foliage in all directions to no success.</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

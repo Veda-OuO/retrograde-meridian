@@ -1,0 +1,177 @@
+---
+// filepath: src/layouts/BaseLayoutCrossfire.astro
+import Sidebar from '../mysteries/crossfire/components/Sidebar.astro';
+import VisitTracker from '../mysteries/crossfire/components/VisitTracker.astro';
+
+export interface Props {
+  title: string;
+  pageId: string;
+}
+
+const { title, pageId } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Play interactive mystery detective games. Solve cases, interview suspects, and uncover clues in With the Candlestick Mysteries.">
+  <meta name="keywords" content="mystery game, detective game, interactive fiction, whodunit, puzzle game, online mystery, case solving, crime game">
+  <meta name="author" content="With the Candlestick Mysteries">
+  
+  <!-- Open Graph tags for social sharing -->
+  <meta property="og:title" content="{title} | With the Candlestick Mysteries">
+  <meta property="og:description" content="Interactive mystery detective game where you solve cases and uncover clues">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={`https://withthecandlestickmysteries.com${Astro.url.pathname}`}>
+  <meta property="og:image" content="https://withthecandlestickmysteries.com/assets/rules.jpg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={`https://withthecandlestickmysteries.com${Astro.url.pathname}`}>
+
+   <!-- Favicon -->
+  <link rel="icon" href={`/favicon.ico`}>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-65QXKQK4RX"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-65QXKQK4RX');
+  </script>
+  
+  <title>{title} | With the Candlestick Mysteries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="banner">
+    <span class="case-title">Case 2: Crossfire</span>
+    <div class="banner-buttons">
+      <a href="/" class="home-button">Home</a>
+    </div>
+  </div>
+  <button class="menu-toggle" id="menuToggle">☰ Menu</button>
+  
+  <div class="container">
+      <Sidebar mysteryId="crossfire" />
+    <main class="main-content">
+      <slot />
+    </main>
+  </div>
+  
+  <VisitTracker pageId={pageId} mysteryId="crossfire" />
+</body>
+</html>
+
+<style is:global>
+  /* Your existing global styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Special Elite', cursive;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(20, 20, 20, 0.95);
+    color: #d4a574;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 200;
+    border-bottom: 2px solid #d4a574;
+  }
+
+  .case-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .banner-buttons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .home-button {
+    padding: 8px 20px;
+    background: rgba(139, 0, 0, 0.8);
+    color: #d4a574;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+  }
+
+  .home-button:hover {
+    background: rgba(139, 0, 0, 1);
+    transform: translateY(-2px);
+  }
+
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    z-index: 150;
+    background: rgba(20, 20, 20, 0.95);
+    color: #d4a574;
+    border: 2px solid #d4a574;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .container {
+    display: flex;
+    margin-top: 60px;
+  }
+
+  .main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 40px 20px;
+    min-height: calc(100vh - 60px);
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 20px 10px;
+    }
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile-visible');
+    });
+  }
+</script>

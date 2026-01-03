@@ -1,0 +1,47 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="11 - A" pageId="11a" mysteryId={mysteryId} backgroundImage="/assets/11a.jpg">
+
+  <div class="title">11 - A</div>
+  <div class="text-box">
+    <p><strong>The Eleventh Labor (1910 - Ewings)</strong></p>
+    <p><em>6 foot x 4 foot - oil on canvas</em></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">Within a thick brass frame, three golden apples lay in the dirt. Next to them, the great bow of Hercules and what remained of his collection of poison arrows.&nbsp;</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">With bold colors, laid one atop the next in an impressionistic style, Ewings brought the scene to life in dramatic fashion.</span></p>
+    <p>&nbsp;</p>
+    <p><span style="font-weight: 400;">A closer look at the custom frame revealed five small holes&ndash; perhaps one for each poison arrow shown in the painting. I tried every key Mr. Grady had&ndash; and other objects, too&ndash; but nothing came of it.</span></p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

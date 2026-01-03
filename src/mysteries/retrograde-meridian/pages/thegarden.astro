@@ -1,0 +1,53 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="The Garden" pageId="thegarden" mysteryId={mysteryId} backgroundImage="/assets/garden.jpg">
+
+
+  <div class="title">The Garden</div>
+  <div class="text-box">
+    <p>At the far end of the main entry, two large windows flanked either side of the garden&rsquo;s grand entrance. The iron doors had been fashioned to look like a castle gate. They creaked as I swung them open and stepped out into the cool night air.</p>
+    <p>&nbsp;</p>
+    <p>Directly ahead of me was the garden&rsquo;s central courtyard. Around a large concrete pad, seven apple trees leaned over a long metal table and its dozen neatly arranged chairs. There was plenty of moonlight to navigate the darkness, and, as if drawn by its power, I walked the length of the courtyard to the foot of a towering, 12 foot dragon statue. No doubt fashioned from the finest white marble, it roared and gnashed its teeth above the rows of surrounding hedges.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>The beast made for an appalling display and must have come at great expense. But the golden apple resting between its teeth was perhaps the most&nbsp;peculiar&nbsp;feature of the entire garden. No larger than a golf ball, it gleamed like a beacon in the pale moonlight.</p>
+    <p>&nbsp;</p>
+    <p>Shaking my head, I continued my search up and down the winding paths, moving between rows of green hedge walls. In my wandering, I stumbled across the garden&rsquo;s many water features&ndash; finding them all in disrepair.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Near the eastern corner, stone nymphs splashed each other in a fountain that was long overgrown with moss and tangled vines. To the south, I found a statue of Hercules, standing tall and poised to loose an arrow. No doubt a stream of water had been intended to shoot from the weapon, depicting the arrow&rsquo;s trajectory into the sky, but it too was dormant.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>At the garden&rsquo;s western edge, Mr. Range&rsquo;s bedroom window sat two stories above a small lake. The wall was sheer and made of red brick, a series of black iron dragons shooting from the wall like gargoyles. On the wing of the dragon just below Mr. Range&rsquo;s window, hung a torn piece of fabric. I asked Mr. Grady about it, and he said it resembled the crimson smoking jacket Mr. Range was so fond of wearing.</p>
+    <p>&nbsp;</p>
+    <p>I looked around for additional clues before making my way back to the exit, when a final glance at the dragon statue left me in shock. The sharp fangs had been shattered, and the golden apple once held within was gone.</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

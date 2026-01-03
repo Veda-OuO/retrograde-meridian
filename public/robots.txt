@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+
+# Block suspicious parameter URLs
+Disallow: /*?whoisdatacenter.com*
+Disallow: /*?*whoisdatacenter.com*
+
+Sitemap: https://www.withthecandlestickmysteries.com/sitemap.xml

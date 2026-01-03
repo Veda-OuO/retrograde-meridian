@@ -1,0 +1,47 @@
+---
+// filepath: src/pages/[mystery]/[...page].astro
+
+export async function getStaticPaths() {
+  const paths = [];
+  
+  // Load Retrograde Meridian pages
+  const rmPages = await import('../../mysteries/retrograde-meridian/data/pages.js');
+  
+  rmPages.pages.forEach(item => {
+    if (item.type === 'link') {
+      paths.push({
+        params: { mystery: 'retrograde-meridian', page: item.filename },
+        props: { mystery: 'retrograde-meridian', pagePath: item.filename }
+      });
+    }
+  });
+  
+  // Load Crossfire pages
+  const cfPages = await import('../../mysteries/crossfire/data/pages.js');
+  
+  cfPages.pages.forEach(item => {
+    if (item.type === 'link') {
+      paths.push({
+        params: { mystery: 'crossfire', page: item.filename },
+        props: { mystery: 'crossfire', pagePath: item.filename }
+      });
+    }
+  });
+  
+  return paths;
+}
+
+const { mystery, pagePath } = Astro.props;
+
+// Try to find the page
+let PageComponent;
+try {
+  const module = await import(`../../mysteries/${mystery}/pages/${pagePath}.astro`);
+  PageComponent = module.default;
+} catch (e) {
+  console.error(`Could not load page: ${pagePath}`, e);
+  return Astro.redirect('/');
+}
+---
+
+<PageComponent mysteryId={mystery} />

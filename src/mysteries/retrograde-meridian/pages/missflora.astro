@@ -1,0 +1,90 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Miss Flora" pageId="missflora" mysteryId={mysteryId} backgroundImage="/assets/mflora.jpg">
+
+  <div class="title">Miss Flora</div>
+  <div class="text-box">
+    <p>I heard the crying of a young woman before knocking on the housekeeper's door. She lived in a remote wing of the first floor, far away from the commotion of the entry.</p>
+    <p>&nbsp;</p>
+    <p>"Miss Flora, my name is Detective Dent, and I'd like to speak with you."</p>
+    <p>&nbsp;</p>
+    <p>"Go away, Detective! I have nothing to say to you!"</p>
+    <p>&nbsp;</p>
+    <p>"We must speak at once, ma'am. Please open the door, or you'll leave me no choice but to fetch the key from Mr. Grady."</p>
+    <p>&nbsp;</p>
+    <p>For a long moment there was silence, then the sound of drawers being opened and closed. Finally, the lock clicked. A young blonde haired woman in a plain grey dress opened the door.</p>
+    <p>&nbsp;</p>
+    <p>"May I come in?"</p>
+    <p>&nbsp;</p>
+    <p>She said nothing, but pulled the door open and walked to sit on her bed. The room was small and austere. Her bed was made of a simple metal frame, and the bare walls were painted in a sterile white.</p>
+    <p>&nbsp;</p>
+    <p>"Are you feeling well, Miss Flora?"</p>
+    <p>&nbsp;</p>
+    <p>"Yes, I am fine."</p>
+    <p>&nbsp;</p>
+    <p>"It doesn't seem so to me. I heard you crying from outside your door."</p>
+    <p>&nbsp;</p>
+    <p>Her upper lip curled. "You were spying on me?"</p>
+    <p>&nbsp;</p>
+    <p>"Not spying. Just investigating. Has something upset you?<br /><br /></p>
+    <p>"No. And I think you should leave."</p>
+    <p>&nbsp;</p>
+    <p>"This is quite possibly a murder investigation, Miss Flora. I need you to be honest with me. Where have you been since this afternoon's meeting?"<br /><br />"Well, I was busy cleaning the bedrooms of the guests, and then I helped Mrs. Lawrence in the kitchen. Mr. Grady requested that I clean all the guests' rooms today. So, after dinner, I finished Mr. Dawson's, which was the last of them, before realizing what was happening in the rest of the house."</p>
+    <p>&nbsp;</p>
+    <p>"So you were alone for most of the day?"</p>
+    <p>&nbsp;</p>
+    <p>"Yes."</p>
+    <p>&nbsp;</p>
+    <p>"Did you encounter anyone while cleaning?"</p>
+    <p>&nbsp;</p>
+    <p>"Only Mr. Flanders. He came into the War Room around 4 pm when I was making his bed."</p>
+    <p>&nbsp;</p>
+    <p>"Did he say anything to you? How was his demeanor?"</p>
+    <p>&nbsp;</p>
+    <p>"He's a very cold man. Apparently he had asked that his room not be cleaned, but I never got that message. His yelling made me uncomfortable, so I left."</p>
+    <p>&nbsp;</p>
+    <p>"Very good, Flora. Before I go, I'd like to look through your dresser drawers. Do I have your permission? A search warrant is already on its way, I can assure you."<br /><br /></p>
+    <p>She lowered her eyebrows but nodded permission.</p>
+    <p>&nbsp;</p>
+    <p>The young lady owned few articles of clothing beyond her formal attire. However, in the bottom drawer, below her neatly pressed grey uniforms, I found a set of black lace lingerie. Inside the lining of a garter I found a small, rectangular note.</p>
+    <p>&nbsp;</p>
+    <p>Unfolding it carefully, the textured paper appeared to have been torn from a pad. A forest scene had been lightly stamped along the bottom edge, tropical birds in both corners.</p>
+    <p>&nbsp;</p>
+    <p>Written in black ink, the note read:</p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src="/assets/FloraNote.jpg" alt="Evidence image" class="bottom-image-style">
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

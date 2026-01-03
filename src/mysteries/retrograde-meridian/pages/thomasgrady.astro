@@ -1,0 +1,108 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Thomas Grady" pageId="thomasgrady" mysteryId={mysteryId} backgroundImage="/assets/tgrady.jpg">
+
+  <div class="title">Thomas Grady</div>
+  <div class="text-box">
+    <p>"Ah, Detective Dent, you've been causing quite a stir around here. I can't say it's any great pleasure to see you again. I would have hoped the list I made you would be all the help a professional like yourself would require to solve this case."</p>
+    <p>&nbsp;</p>
+    <p>"My apologies, Mr. Grady. This shouldn't take long. I just have a few more questions for you."</p>
+    <p>&nbsp;</p>
+    <p>His eyes were locked on my shoes, contempt gathering on the corners of his lips. "Very well, Detective."</p>
+    <p>&nbsp;</p>
+    <p>"Does Mr. Range have a habit of disappearing like he has today?"</p>
+    <p>&nbsp;</p>
+    <p>"No, sir. He is a busy man who would never leave his work like this. Despite his sickness, his head has been full of dizzying ideas lately; I can hardly keep up with him."</p>
+    <p>&nbsp;</p>
+    <p>"What do you mean?"</p>
+    <p>&nbsp;</p>
+    <p>"Well, this gathering was of course conceived at his request. I know nothing of the details, but he was very selective about who received the invitations. For the past few months, he's been holed up in his room doing god-knows-what, sir."</p>
+    <p>&nbsp;</p>
+    <p>"I see, and where is Mr. Range's bedroom?"</p>
+    <p>&nbsp;</p>
+    <p>His eyes narrowed. "Second floor. Turn left, and it's at the end of the south wing. <strong>(9 - P)</strong>"</p>
+    <p>&nbsp;</p>
+    <p>"Thank you."</p>
+    <p>&nbsp;</p>
+    <p>"Should you decide to visit, see that you mind your step when entering, Detective."</p>
+    <p>&nbsp;</p>
+    <p>I thought I saw a little smirk form at the corner of his lips, but I moved on.</p>
+    <p>&nbsp;</p>
+    <p>"I will. And, Mr. Grady, where were you during dinner service this evening?"</p>
+    <p>&nbsp;</p>
+    <p>"Butlers are in charge of the kitchen and dining room, Detective. Where do you think I was? I would <em>never</em> neglect my duties."</p>
+    <p>&nbsp;</p>
+    <p>"My apologies; I did not mean to offend. But, tell me: was tonight's dinner service unusual in any way?"</p>
+    <p>&nbsp;</p>
+    <p>"Not at all. The first course was served at 7 on the dot, just as Wesley requires."</p>
+    <p>&nbsp;</p>
+    <p>"Was the entire staff– yourself, Miss Flora, and Mrs. Lawrence– present?"</p>
+    <p>&nbsp;</p>
+    <p>"Yes."</p>
+    <p>&nbsp;</p>
+    <p>"Did you see any staff or guests leave during the meal or just before?"</p>
+    <p>&nbsp;</p>
+    <p>He paused for a moment, looked me in the eyes, and then said, "Yes. At one point before serving, Miss Flora said she was feeling ill and needed some fresh air. I gave her permission, seeing as the meal was nearly prepared."</p>
+    <p>&nbsp;</p>
+    <p>"How long was she gone?"</p>
+    <p>&nbsp;</p>
+    <p>"I couldn't say. Serving guests and managing staff is not as easy as you might assume, Detective. She was back to assist with clearing the first course– I know that for certain."</p>
+    <p>&nbsp;</p>
+    <p>"You might be in the best position to tell me this, Mr. Grady: what were the eating habits of the guests tonight? Who consumed which dishes?"</p>
+    <p>&nbsp;</p>
+    <p>"Only three guests were present during dinner service: Mrs. Wells, Miss Barton, and Mr. Dawson. Unsurprisingly, Miss Barton skipped the salad--after making a big show of it--but Mrs. Wells and Mr. Dawson both complimented the summer greens we'd sourced locally.</p>
+    <p>&nbsp;</p>
+    <p>The second course was pea soup. Mrs. Wells and Miss Barton requested an additional portion later in the meal, only after Miss Barton berated myself and the cook about the seasoning in the pea soup. Thankfully, Mr. Dawson cleaned his bowl without comment."</p>
+    <p>&nbsp;</p>
+    <p>Mr. Grady rolled his eyes, and continued:</p>
+    <p>&nbsp;</p>
+    <p>"We were strained and behind schedule at this point, but Baked Cod was then served for the main course– dinner rolls on the side. With all of Miss Barton's complaints, service was already a catastrophe, so imagine my fury when that awful Fred Wells came barging in to make matters worse. He pranced his way to me and demanded a plate heaped with Cod and dinner rolls. And, can you believe it, Detective? He grabbed the plate I made for him and left with the food in hand! In all my years…."</p>
+    <p>&nbsp;</p>
+    <p>I cut in before his tirade could reach its full momentum. "Hmm, yes, that is very strange. Was it Mr. Wells' habit to eat separately?"</p>
+    <p>&nbsp;</p>
+    <p>"No! He's been present for the other meals. But I will say it certainly <em>was</em> his habit to be <em>rude</em>."</p>
+    <p>&nbsp;</p>
+    <p>"Very good, Mr. Grady. You've been a great help. And, oh, I have one more thing… Where do you reside in the house?"</p>
+    <p>&nbsp;</p>
+    <p>"Mr. Range has recently moved me from the servants' wing and into the second floor Winter Suite <strong>(7 - P)</strong>. I have made that my home."</p>
+    <p>&nbsp;</p>
+    <p>"I might wish to look around your residence at some point. Is that okay?"</p>
+    <p>&nbsp;</p>
+    <p>"Oh, well, I can't say that's any surprise coming from a man of such poor manners as yourself."</p>
+    <p>&nbsp;</p>
+    <p>He thrust open his jacket and pulled from his left pocket a single brass key. Tossing it to me, disgust dripping from his voice, he said, "See that you don't make a mess of the place, Detective."</p>
+    <p><br /><br /><br /></p>
+    <p>(At any time, you may spend an Investigative Hour to search <strong>Thomas Grady's Room</strong> <strong>(7 - P)</strong>, or <strong>The Master Bedroom (Wesley Range) (9 -P)</strong>.)</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

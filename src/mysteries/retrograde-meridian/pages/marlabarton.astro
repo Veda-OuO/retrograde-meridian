@@ -1,0 +1,74 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Marla Barton" pageId="marlabarton" mysteryId={mysteryId} backgroundImage="/assets/mbarton.jpg">
+
+  <div class="title">Marla Barton</div>
+  <div class="text-box">
+    <p>I caught Marla just in time to ask her a few questions.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>She looked just as pale as when I had last seen her, but she was now sitting up on a stretcher in the back of an ambulance and able to speak in a soft voice.</p>
+    <p>&nbsp;</p>
+    <p>"Miss Barton, I'll try to be quick. Did you see anything tonight?"</p>
+    <p>&nbsp;</p>
+    <p>"No." A fit of coughing overcame her before she could continue. "Dale wanted to play billiards. I think it's a dreadful game, but we were heading across the entry to the billiard room when I felt a sudden tightening in my stomach. It wasn't long after that I blacked out."</p>
+    <p>&nbsp;</p>
+    <p>"I'm sorry to hear that. What did you have for dinner?"</p>
+    <p>&nbsp;</p>
+    <p>"Two bowls of pea soup--after the cook finally got the salt correct. Mr. Grady complained that I was delaying things, but I will not stand for unseasoned food, Detective. Thankfully they learned before the Cod fillet was served, and my glass of white wine only needed to be poured from a bottle which Mr. Grady managed just fine. An appalling salad was also offered, but I refused it. The greens were wilted and the dressing far too sweet."</p>
+    <p>&nbsp;</p>
+    <p>"You have a delicate pallate, Miss Barton."</p>
+    <p>&nbsp;</p>
+    <p>"Delicate? More like refined, Detective."</p>
+    <p>&nbsp;</p>
+    <p>"Understood. And do you recall who was with you at dinner?"</p>
+    <p>&nbsp;</p>
+    <p>"It was a boring affair compared to our previous meals. Angie sat next to me, and Dale was across the table. Only the three of us attended."</p>
+    <p>&nbsp;</p>
+    <p>Another coughing fit came, and the ambulance was nearly ready to leave.</p>
+    <p>&nbsp;</p>
+    <p>"Was anything of interest discussed at dinner?"</p>
+    <p>&nbsp;</p>
+    <p>"Not really. Dale rambled about his delivery company, and Angie talked about her husband's Casino. She was nearly in tears describing the financial 'maneuvers' he'd been performing for his sordid friends. It wasn't exactly clear to me what she meant. None of us really knew much about Allen's work, but I was then asked about my job."</p>
+    <p>&nbsp;</p>
+    <p>The EMTs returned and began to secure her for the drive. Quickly, I asked, "What do you do, Miss Barton?"</p>
+    <p>&nbsp;</p>
+    <p>She laid her head back on the stretcher, closed her eyes and answered, "I'm a customs official."&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>"I see. And where were the others, those who didn't show up for dinner?"</p>
+    <p>&nbsp;</p>
+    <p>"I have no clue. Fred stopped in for some Cod and dinner rolls but left with his plate in hand."</p>
+    <p>&nbsp;</p>
+    <p>At that moment, a blood pressure cuff was placed on her arm, and the doors of the ambulance were closed between us. I walked back to the house as Miss Barton was swept away in the direction of Salem General.&nbsp;</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

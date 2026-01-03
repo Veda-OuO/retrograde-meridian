@@ -1,0 +1,154 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Rules" pageId="rules" mysteryId={mysteryId}>
+  <div class="title">Rules</div>
+  
+  <div class="text-box">
+    <p><strong>Goal:</strong></p>
+    <p>&nbsp;</p>
+    <p>Learn as much as you can about the events at the Range Estate. Once 11 Investigative Hours have passed, use the evidence you've gathered to answer the secret questions in the Exam tab. Then, visit the Whodunit tab to discover what really happened and compare your answers.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><strong>Investigation:</strong></p>
+    <p>&nbsp;</p>
+    <p>To conduct your investigation, first, read the <strong>Introduction tab</strong> to learn the basic information of the case. It is then up to you to determine which leads you will follow. Each person and place you visit will cost you one <strong>Investigative Hour</strong> but many will provide information critical to solving the case.</p>
+    <p>&nbsp;</p>
+    <p><li>To <strong>interview a specific person</strong>, find their name in the People section. Be careful, though: some suspects may know more than others.</li></p>
+    <p>&nbsp;</p>
+    <p><li>To <strong>search an area</strong>, find the corresponding room in the First and Second Floor sections. Places can yield physical evidence essential to solving the case, or nothing at all.</li></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>At the start of the game, <strong>you may only investigate Tabs with formal names</strong>. Tabs that contain numbers and a single letter are hidden and contain information that can only be revealed in the process of your investigation of other areas and people.</p>
+    <p>&nbsp;</p>
+    <p>Each Tab you review costs one hour of <strong>Investigation Time</strong>. For this case, you have <strong>11 hours of Investigation Time</strong> to gather evidence before the culprit/culprits escape. Each unused hour of Investigation Time short of 11 increases your score by 10 points.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Reference the chart below after you complete the case to learn how well you conducted your investigation.</p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src={`/assets/PointsComparisonChart-WW.png`} alt="Points comparison chart" class="bottom-image-style">
+  </div>
+  
+  <div class="rules-action-buttons">
+    <button id="solveCase" class="rules-game-button rules-solve-button">Solve Case</button>
+    <button id="resetCase" class="rules-game-button rules-reset-button">Reset Case</button>
+  </div>
+</Layout>
+
+<style is:global>
+  body {
+    background-image: url('/assets/rules.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .rules-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+  }
+  
+  .rules-game-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    border: none;
+  }
+  
+  .rules-solve-button {
+    background-color: #3498db !important;
+    color: white !important;
+    border: 2px solid #2980b9 !important;
+  }
+  
+  .rules-solve-button:hover {
+    background-color: #2980b9 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .rules-solve-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .rules-reset-button {
+    background-color: #8B0000 !important;
+    color: white !important;
+    border: 2px solid #ff6b6b !important;
+  }
+  
+  .rules-reset-button:hover {
+    background-color: #a00000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .rules-reset-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .title { font-size: 40px; margin-top: 50px; }
+    .rules-action-buttons { flex-direction: column; align-items: center; }
+    .rules-game-button { width: 80%; }
+  }
+  
+  @media (max-width: 480px) {
+    .title { font-size: 30px; }
+    .rules-game-button { width: 100%; font-size: 16px; padding: 12px 20px; }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const solveCaseButton = document.getElementById('solveCase');
+  if (solveCaseButton) {
+    solveCaseButton.addEventListener('click', () => {
+      if (confirm('Are you sure you want to solve the case now? This will prevent you from exploring further leads and take you straight to the exam page.')) {
+        localStorage.setItem("timeReachedZero", "true");
+        localStorage.setItem("examUnlocked", "true");
+        alert('The Exam is now unlocked. You can proceed to submit your answers.');
+        window.location.reload();
+      }
+    });
+  }
+  
+  const resetCaseButton = document.getElementById('resetCase');
+  if (resetCaseButton) {
+    resetCaseButton.addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset this case? All your progress will be lost.')) {
+        localStorage.clear();
+        window.location.href = `/retrograde-meridian/intro`;
+      }
+    });
+  }
+});
+</script>

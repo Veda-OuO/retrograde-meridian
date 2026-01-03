@@ -1,0 +1,14 @@
+# Photoshop source files
+*.psd
+
+# Other design files (optional)
+*.ai
+*.sketch
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output (if not already ignored)
+dist/
+.astro/

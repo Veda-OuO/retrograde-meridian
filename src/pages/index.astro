@@ -1,0 +1,196 @@
+---
+// filepath: c:\Users\gregw\retrograde-meridian\src\pages\index.astro
+import LandingLayout from '../layouts/LandingLayout.astro';
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<LandingLayout 
+  title="Interactive Mystery Game | With the Candlestick Mysteries"
+  description="Play With the Candlestick Mysteries – an interactive detective game where you lead your own investigation. Choose which suspects to interrogate and where to search for clues as you race to crack the case and solve the mystery before time runs out."
+  backgroundImage={`/assets/rules.jpg`}
+>
+  <h1>Case Files</h1>
+  <p class="intro">
+    Select a case to begin your investigation. Follow your instincts as you explore the crime scene and uncover the evidence for yourself! You decide which suspects to interview and which rooms to search in this literary detective game-- perfect for solo and group play alike!
+  </p>
+
+  <section class="case-container">
+    <div class="case-box">
+      <a href={`/retrograde-meridian/rules`} aria-label="Open Case 1: Where's Wesley">
+        <img loading="lazy" src={`/assets/Folder-Where'sWesley.png`} alt="Case 1: Wheres Wesley" class="case-image">
+      </a>
+    </div>
+    <div class="case-box">
+      <a href="/crossfire/rules" class="case-folder" aria-label="Open Case 2: Crossfire">
+        <img loading="lazy" src="/assets/Folder-Crossfire.png" alt="Case 2: Crossfire" class="case-image">
+      </a>
+    </div>
+    <div class="case-box">
+      <a href="#" aria-label="Case 3: Candlelight Intrigue (Coming Soon)">
+        <img loading="lazy" src={`/assets/Folder-Blank.png`} alt="Case 3: Candlelight Intrigue" class="case-image">
+        <span class="coming-soon-tag">Coming Soon</span>
+      </a>
+    </div>
+    <div class="case-box">
+      <a href="#" aria-label="Case 4: Mystery Case (Coming Soon)">
+        <img loading="lazy" src={`/assets/Folder-Blank.png`} alt="Case 4: Mystery Case" class="case-image">
+        <span class="coming-soon-tag">Coming Soon</span>
+      </a>
+    </div>
+    <div class="case-box">
+      <a href="#" aria-label="Case 5: Another Mystery (Coming Soon)">
+        <img loading="lazy" src={`/assets/Folder-Blank.png`} alt="Case 5: Another Mystery" class="case-image">
+        <span class="coming-soon-tag">Coming Soon</span>
+      </a>
+    </div>
+    <div class="case-box">
+      <a href="#" aria-label="Case 6: Final Case (Coming Soon)">
+        <img loading="lazy" src={`/assets/Folder-Blank.png`} alt="Case 6: Final Case" class="case-image">
+        <span class="coming-soon-tag">Coming Soon</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="seo-text">
+    <p>
+      Welcome to <strong>With the Candlestick Mysteries</strong> – a literary detective adventure game. Follow leads, uncover clues, and use your wits to solve each case before the culprit can escape! Perfect for fans of classic whodunits, mystery novels, and interactive storytelling.
+    </p>
+  </section>
+  <!-- Schema.org markup for Google+ to aid with search metrics -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    "name": "With the Candlestick Mysteries",
+    "description": "Interactive mystery detective game where you solve cases and uncover clues",
+    "url": "https://withthecandlestickmysteries.com",
+    "genre": "Mystery",
+    "gameItem": "Detective Game",
+    "playMode": "SinglePlayer",
+    "applicationCategory": "Game",
+    "operatingSystem": "Web Browser",
+    "author": {
+      "@type": "Organization",
+      "name": "With the Candlestick Mysteries"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</LandingLayout>
+
+<style>
+  h1 {
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #f8f8f8;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .intro {
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .case-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 0 1rem;
+  }
+
+  .case-box {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .case-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .case-box a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .case-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+    background-color: transparent;
+  }
+
+  .coming-soon-tag {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: #8B0000;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 4px 0 0 4px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .seo-text {
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #a0a0a0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 900px) {
+    .case-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      padding: 0 2rem;
+      max-width: 600px;
+    }
+    .case-box { max-width: 250px; }
+    h1 { font-size: 2.5rem; padding: 0 1rem; }
+    .intro { font-size: 1.1rem; margin-bottom: 2rem; padding: 0 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .case-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 320px;
+    }
+    .case-box { max-width: 280px; }
+    h1 { font-size: 2rem; margin-top: 1rem; }
+    .intro { font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5; }
+    .case-box:hover { transform: translateY(-5px); }
+    .coming-soon-tag { font-size: 0.7rem; padding: 4px 8px; }
+  }
+</style>

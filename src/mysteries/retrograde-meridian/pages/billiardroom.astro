@@ -1,0 +1,55 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Billiard Room" pageId="billiardroom" mysteryId={mysteryId} backgroundImage="/assets/broom.jpg">
+
+
+  <div class="title">Billiard Room</div>
+  <div class="text-box">
+    <p>In the middle of the room stood two full-size billiard tables, their pristine play surface covered in fine crimson fabric. They stood on intricate legs that looked to be made from dark Mahogany. I walked to the center of the room and ran my hand over the soft felt.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>The table on the right was supported by a cast of nymphs. Their hands extended upward grasping each of the corner pockets which had been fashioned into decorative apples. The table on my left had three legs&nbsp;in the shape of&nbsp;lush trees. Dozens of expertly carved branches coiled over themselves before stretching away from the corner pockets and snaking along the length of the table. The fourth leg was that of a dragon, his tongue curling up and away from rows of pointed teeth.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>As I made my way around the tables, I noticed that one of the dragon&rsquo;s tightly wrapped wings was slightly ajar. Crouching to my knees, I pried gently at the smooth, dark appendage which, to my surprise, was attached to a hinge. The wing swung outward to reveal a small inner chamber inside the table leg itself. I reached inside the shadows but felt nothing apart from the rough, unfinished walls of the dragon&rsquo;s belly.</p>
+    <p>&nbsp;</p>
+    <p>Pushing the wing back in place, I continued with my investigation. The room&rsquo;s brown leather walls were lined with photographs from Wesley Range&rsquo;s decades of worldly travel. There was barely enough room to stow the billiard cues between the constellation of frames and plaques.</p>
+    <p>&nbsp;</p>
+    <p>Most featured the man himself. He was short compared to the characters who stood beside him and seemed to have greyed early in his life. Apart from the unsavory cast of characters, the photos featured all manner of exotic&ndash;and potentially illegal&ndash;trophies and items.</p>
+    <p>&nbsp;</p>
+    <p>One showed a tall, masked man in colorful robes helping Wesley prop up a full tiger skin pelt for the camera. Wesley was beaming. Another featured a Wesley in his mid-forties bent over a crate of paintings. Dozens of them stood upright, one frame against the next, in a wooden shipping crate such that the art was not visible to the observer.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>The largest frame, displayed prominently above the room&rsquo;s wet bar, showed the old man sitting atop an enormous wine cask, his stubby legs tumbling over the side like he was riding a horse.</p>
+    <p>&nbsp;</p>
+    <p>I had to leave the room for a few minutes to secure evidence in the entry hall, and, when I returned, Dale Dawson was in the room with me.&nbsp;</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

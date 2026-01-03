@@ -1,0 +1,70 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Dining Car" pageId="diningcar" mysteryId={mysteryId} backgroundImage="/assets/diningcar.jpg">
+
+  <div class="title">Dining Car</div>
+  <div class="text-box">
+<p><span style="font-weight: 400;">The Dining Car stood empty when I returned&mdash;a welcome circumstance for the work ahead. My cursory inspection of the booths revealed nothing, so I turned my attention to the cooking area behind the serving counter.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">The sandwich that had fallen earlier was gone, likely cleared away by the cook. But that strange sound I'd heard earlier, when the train had suddenly stopped, still troubled me. Kneeling down, I crawled under the lip of the counter for a closer examination.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">The recess was dark and covered in dust. Maneuvering myself deeper into the space, I had just enough light spilling in from the overhead saucers to assess the area. My breath caught in my throat. It was immediately apparent: a large area within the dense blanket of dust had been brushed away, as if by fabric and limbs. Could it be? Is it possible that the thud I had heard from beneath the counter was a person? If so, when I leaned over the counter earlier, I could have been within inches of discovering the murderer crouched in the shadows below me.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">Hands trembling, I felt around for anything that might have been dropped. In the dark, my fingers traced a set of scuff marks near the wall from where I had heard the thud.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">I didn&rsquo;t know what to make of it.&nbsp;</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">Standing from the dusty hold, I performed another sweep of the car. The grill, sink, and cook&rsquo;s utensils revealed nothing of note.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">I looked up and down the length of the car, wondering how the person hiding under the counter could have possibly made their escape. Taking the passage through the vestibule and into the Passenger Car would surely have produced a witness or two. Afterall, the shots had attracted the attention of the entire train. It wasn&rsquo;t a risk that the murderer could take.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">For a long moment I thought, until noticing a side exit that led outside the train. These doors had not occurred to me, having grown accustomed to the train being in motion.&nbsp;</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">As expected, the door was unlocked. I stepped freely into the dry, dusty night.&nbsp;</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">A single set of footprints marked the sand&mdash;smaller than my own. To my surprise, they led away from the train rather than parallel to it.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">Following them closely, I was led to a thick knot of bushes some 30 yards from the train. Just beside the nearest bundle of thorns, I noticed two rectangular silhouettes imprinted in the sand.&nbsp;</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">Pulling a lighter from my pocket, the flame&rsquo;s soft glow guided my search within the prickly depths of the desert shrubs. Ragged barbs tore at my sleeve until, finally, my fingers closed around a fist full of cold metal. Prying it from the bushes, the light of a full moon revealed a silver revolver in my hand. Three chambers were spent; embossed in gold upon the handle: 'RS.'"</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">I dumped the cartridges into one pocket, putting the pistol in another. I continued following the tracks and was led directly to the side door of the Passenger Car. It, too, was unlocked, and before stepping inside, I again noticed two rectangular imprints in the sand.&nbsp;</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">To my dismay, the trail quickly turned cold. A small amount of dust and sand was visible just at the entry, but there was nothing which could be visibly tracked beyond the entry rug.</span></p>
+<p class="demoTitle">&nbsp;</p>
+<p><span style="font-weight: 400;">Making note of what I had found, I continued my investigation elsewhere.</span><br /><br /></p>
+<!-- Comments are visible in the HTML source only -->
+
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

@@ -1,0 +1,472 @@
+---
+// filepath: src/mysteries/crossfire/components/VisitTracker.astro
+import { pages, items } from '../data/pages.js';
+
+export interface Props {
+  pageId: string;
+  mysteryId?: string;
+}
+
+const { pageId, mysteryId = 'crossfire' } = Astro.props;
+---
+
+<script define:vars={{ pageId, pages, items, mysteryId }}>
+  class GameState {
+    constructor() {
+      this.visited = new Set();
+      this.inventory = [];
+      this.examUnlocked = false;
+      this.whodunitUnlocked = false;
+      this.timeReachedZero = false;
+      this.loadState();
+    }
+
+    getKey(key) {
+      return `${mysteryId}_${key}`;
+    }
+
+    loadState() {
+      try {
+        const storedVisited = localStorage.getItem(this.getKey("visits"));
+        if (storedVisited) {
+          const parsed = JSON.parse(storedVisited);
+          if (Array.isArray(parsed)) {
+            this.visited = new Set(parsed);
+          } else {
+            this.visited = new Set(Object.keys(parsed));
+          }
+        }
+
+        const storedInventory = localStorage.getItem(this.getKey("inventory"));
+        if (storedInventory) this.inventory = JSON.parse(storedInventory);
+
+        this.examUnlocked = localStorage.getItem(this.getKey("examUnlocked")) === "true";
+        this.whodunitUnlocked = localStorage.getItem(this.getKey("whodunitUnlocked")) === "true";
+        this.timeReachedZero = localStorage.getItem(this.getKey("timeReachedZero")) === "true";
+
+        pages.forEach(page => {
+          if (page.type === 'link') {
+            const lockedState = localStorage.getItem(this.getKey(`locked_${page.filename}`));
+            if (lockedState !== null) page.initialLocked = lockedState === "true";
+          }
+        });
+      } catch (e) {
+        console.error("Error loading game state:", e);
+      }
+    }
+
+    saveVisited() { 
+      const visitedObj = {};
+      this.visited.forEach(page => visitedObj[page] = true);
+      localStorage.setItem(this.getKey("visits"), JSON.stringify(visitedObj)); 
+      console.log(`💾 Saved visit for: ${pageId}`);
+    }
+    
+    saveInventory() { localStorage.setItem(this.getKey("inventory"), JSON.stringify(this.inventory)); }
+
+    processPageEffects(pageId) {
+      const currentPage = pages.find(p => p.filename === pageId);
+      
+      if (!currentPage) {
+        console.warn(`⚠️ MISMATCH: Page file has pageId="${pageId}", but no matching filename found in pages.js!`);
+        return;
+      }
+
+      let eventMessages = [];
+
+      // Handle Item Addition
+      if (currentPage.addsItem) {
+        this.inventory.push(currentPage.addsItem);
+        this.saveInventory();
+        if (items[currentPage.addsItem]) {
+            eventMessages.push(`Item added: ${items[currentPage.addsItem].name}`);
+        }
+      }
+      
+      if (currentPage.addsItems && Array.isArray(currentPage.addsItems)) {
+        currentPage.addsItems.forEach(itemId => {
+          this.inventory.push(itemId);
+          if (items[itemId]) {
+            eventMessages.push(`Item added: ${items[itemId].name}`);
+          }
+        });
+        this.saveInventory();
+      }
+
+      // Handle Item Removal
+      if (currentPage.removesItem && this.inventory.includes(currentPage.removesItem)) {
+        const index = this.inventory.indexOf(currentPage.removesItem);
+        if (index > -1) this.inventory.splice(index, 1);
+        this.saveInventory();
+        if (items[currentPage.removesItem]) {
+            eventMessages.push(`Item used: ${items[currentPage.removesItem].name}`);
+        }
+      }
+
+      // Handle Unlocking Pages
+      if (currentPage.unlocksOnVisit) {
+        currentPage.unlocksOnVisit.forEach(filename => {
+          const pageToUnlock = pages.find(p => p.filename === filename);
+          if (pageToUnlock) {
+            pageToUnlock.initialLocked = false;
+            localStorage.setItem(this.getKey(`locked_${pageToUnlock.filename}`), "false");
+            eventMessages.push(`${pageToUnlock.title} unlocked`);
+          }
+        });
+      }
+
+      // Handle Conditional Unlocking (NEW LOGIC)
+      if (currentPage.unlocksIfHasItem) {
+        const { itemId, unlocks } = currentPage.unlocksIfHasItem;
+        
+        if (this.inventory.includes(itemId)) {
+          console.log(`🔑 Player has ${itemId}, checking conditional unlocks...`);
+          
+          unlocks.forEach(filename => {
+            const pageToUnlock = pages.find(p => p.filename === filename);
+            if (pageToUnlock && pageToUnlock.initialLocked) {
+              pageToUnlock.initialLocked = false;
+              localStorage.setItem(this.getKey(`locked_${pageToUnlock.filename}`), "false");
+              
+              const itemName = items[itemId]?.name || itemId;
+              eventMessages.push(`🔓 You used ${itemName} to unlock ${pageToUnlock.title}!`);
+              console.log(`✅ Unlocked ${filename} using ${itemId}`);
+            }
+          });
+        } else {
+          console.log(`🔒 Player doesn't have ${itemId}, no unlock triggered`);
+        }
+      }
+
+      // Handle Locking Pages
+      if (currentPage.locksOnVisit) {
+        currentPage.locksOnVisit.forEach(filename => {
+          const pageToLock = pages.find(p => p.filename === filename);
+          if (pageToLock) {
+            pageToLock.initialLocked = true;
+            localStorage.setItem(this.getKey(`locked_${pageToLock.filename}`), "true");
+            eventMessages.push(`${pageToLock.title} locked`);
+          }
+        });
+      }
+
+      if (eventMessages.length > 0) {
+        this.showEventBox(eventMessages);
+      }
+    }
+
+    lockUnvisitedRooms() {
+      const criticalPages = ['notes', 'rules', 'intro', 'exam', 'whodunit'];
+      pages.forEach(page => {
+        if (page.type === 'link' && !this.visited.has(page.filename) && !criticalPages.includes(page.filename)) {
+          page.initialLocked = true;
+          localStorage.setItem(this.getKey(`locked_${page.filename}`), "true");
+        }
+      });
+    }
+
+    shouldTabBeLocked(filename) {
+      const neverLockPages = ['notes', 'rules', 'intro'];
+      if (neverLockPages.includes(filename)) return false;
+      if (filename === 'exam') return !this.examUnlocked;
+      if (filename === 'whodunit') return !this.whodunitUnlocked;
+      
+      const page = pages.find(p => p.filename === filename);
+      if (!page) return false;
+      
+      if (page.requiresItem && !this.inventory.includes(page.requiresItem)) return true;
+      if (page.initialLocked === true) return true;
+      if (this.timeReachedZero && !this.visited.has(filename)) return true;
+      
+      return false;
+    }
+
+    updateAllUI() {
+      this.updateCounter();
+      this.updateInventoryDisplay();
+      this.updateLinkStates();
+    }
+
+    updateCounter() {
+      const countedVisited = [...this.visited].filter(filename => {
+        const page = pages.find(p => p.filename === filename);
+        return page && page.counted !== false;
+      });
+      
+      const maxHours = 8;
+      const remainingHours = Math.max(0, maxHours - countedVisited.length);
+      
+      // Save to localStorage
+      localStorage.setItem(this.getKey("counter"), remainingHours.toString());
+      
+      // Dispatch event so Sidebar updates immediately
+      window.dispatchEvent(new CustomEvent('counterUpdated', { detail: { count: remainingHours } }));
+      
+      const counter = document.getElementById("counter");
+      if (counter) counter.textContent = remainingHours;
+      
+      const counterElement = counter?.parentElement;
+      if (counterElement) {
+        if (remainingHours <= 2) counterElement.style.backgroundColor = '#ff0000';
+        else if (remainingHours <= 4) counterElement.style.backgroundColor = '#ff4500';
+        else counterElement.style.backgroundColor = '#8B0000';
+      }
+      
+      if (remainingHours === 0 && !this.timeReachedZero) {
+        this.timeReachedZero = true;
+        this.examUnlocked = true;
+        localStorage.setItem(this.getKey("timeReachedZero"), "true");
+        localStorage.setItem(this.getKey("examUnlocked"), "true");
+        this.showEventBox(["Investigation time has run out! The Exam tab is now available."]);
+        this.lockUnvisitedRooms();
+        this.updateLinkStates();
+      }
+      
+      console.log(`🕐 Counter updated: ${remainingHours} hours remaining (${countedVisited.length} pages visited)`);
+    }
+
+    updateInventoryDisplay() {
+      const inventoryGrid = document.getElementById('inventory-grid');
+      if (!inventoryGrid) return;
+      inventoryGrid.innerHTML = '';
+      
+      const itemCounts = {};
+      this.inventory.forEach(itemId => {
+        if (!itemCounts[itemId]) itemCounts[itemId] = 0;
+        itemCounts[itemId]++;
+      });
+      
+      Object.keys(itemCounts).forEach(itemId => {
+        const itemData = items[itemId];
+        const itemCount = itemCounts[itemId];
+        
+        if (itemData && itemData.image) {
+          const itemContainer = document.createElement('div');
+          itemContainer.style.cssText = `padding: 10px 0; width: 100%; text-align: center; position: relative;`;
+          
+          const img = document.createElement('img');
+          img.src = itemData.image; 
+          img.alt = itemData.name;
+          img.className = 'inventory-item';
+          
+          img.style.maxWidth = '120px';
+          img.style.maxHeight = '120px';
+          img.style.width = 'auto';
+          img.style.height = 'auto';
+          img.style.margin = '15px auto';
+          img.style.display = 'block';
+          
+          if (itemCount > 1) {
+            const countBadge = document.createElement('div');
+            countBadge.textContent = itemCount;
+            countBadge.style.cssText = `position: absolute; bottom: 35px; right: calc(50% - 50px); background-color: rgba(0, 0, 0, 0.7); color: white; font-weight: bold; min-width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2px solid white; box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);`;
+            itemContainer.appendChild(img);
+            itemContainer.appendChild(countBadge);
+          } else {
+            itemContainer.appendChild(img);
+          }
+          inventoryGrid.appendChild(itemContainer);
+        }
+      });
+    }
+
+    updateLinkStates() {
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => {
+        const filename = link.getAttribute('data-filename');
+        if (!filename) return;
+        
+        link.classList.remove('visited', 'locked');
+        const existingLock = link.querySelector('.lock-icon');
+        if (existingLock) existingLock.remove();
+
+        if (this.visited.has(filename)) {
+          link.classList.add('visited');
+        }
+        
+        if (this.shouldTabBeLocked(filename)) {
+          link.classList.add('locked');
+          const lockIcon = document.createElement('span');
+          lockIcon.className = 'lock-icon';
+          lockIcon.innerHTML = ' 🔒';
+          lockIcon.style.color = '#FFD700';
+          link.appendChild(lockIcon);
+        }
+      });
+    }
+    
+    showEventBox(messages) {
+      const mainElement = document.querySelector('.main-content');
+      if (!mainElement) return;
+      
+      const firstTextBox = mainElement.querySelector('.text-box');
+      const eventBox = document.createElement('div');
+      eventBox.className = 'event-box';
+      eventBox.innerHTML = `<h3>Events</h3><ul>${messages.map(msg => `<li>${msg}</li>`).join('')}</ul><button class="close-event-box">Close</button>`;
+      eventBox.style.cssText = `background-color: rgba(139, 0, 0, 0.9); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; position: relative; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #ff6b6b; animation: fadeIn 0.5s;`;
+      
+      const closeButton = eventBox.querySelector('.close-event-box');
+      closeButton.style.cssText = `position: absolute; top: 10px; right: 10px; background-color: transparent; color: white; border: 1px solid white; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px;`;
+      
+      if (firstTextBox) {
+        mainElement.insertBefore(eventBox, firstTextBox);
+      } else {
+        mainElement.appendChild(eventBox);
+      }
+      
+      setTimeout(() => {
+        eventBox.style.opacity = '1';
+        eventBox.style.transform = 'translateY(0)';
+      }, 50);
+      
+      closeButton.addEventListener('click', () => {
+        eventBox.style.opacity = '0';
+        eventBox.style.transform = 'translateY(-10px)';
+        setTimeout(() => { eventBox.remove(); }, 300);
+      });
+    }
+
+    setupEventListeners() {
+      window.addEventListener('examCompleted', () => {
+        this.whodunitUnlocked = true;
+        localStorage.setItem(this.getKey('whodunitUnlocked'), 'true');
+        this.updateLinkStates();
+      });
+
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const filename = link.getAttribute('data-filename');
+          const page = pages.find(p => p.filename === filename);
+          
+          if (this.shouldTabBeLocked(filename)) {
+            e.preventDefault();
+            if (page && page.requiresItem && !this.inventory.includes(page.requiresItem)) {
+              if (items[page.requiresItem]) {
+                alert(`This tab is locked. You need the following item to proceed: ${items[page.requiresItem].name}`);
+              } else {
+                alert('This tab is locked. You are missing a required item.');
+              }
+            } else {
+              alert('This tab is currently locked.');
+            }
+            return false;
+          }
+
+          const sidebar = document.getElementById('sidebar');
+          if (window.innerWidth <= 768 && sidebar) {
+            sidebar.classList.remove('open');
+          }
+        });
+      });
+
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.getElementById('sidebar');
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+      }
+      
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && sidebar && !sidebar.contains(e.target) && menuToggle && !menuToggle.contains(e.target) && sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      });
+      
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && sidebar) sidebar.classList.remove('open');
+      });
+    }
+
+    handlePageVisit(filename) {
+      if (this.visited.has(filename)) {
+        console.log(`⏭️ Page "${filename}" already visited - skipping visit logic`);
+        return;
+      }
+      
+      this.visited.add(filename);
+      this.saveVisited();
+      this.processPageEffects(filename);
+      this.updateAllUI();
+      
+      console.log(`✅ Visited "${filename}", updated game state.`);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log(`🚀 VisitTracker loaded for pageId: "${pageId}"`);
+    
+    const game = new GameState();
+
+    console.log(`📋 Current visited set:`, [...game.visited]);
+    console.log(`❓ Is "${pageId}" already visited?`, game.visited.has(pageId));
+
+    const isFirstVisit = !game.visited.has(pageId);
+
+    if (pageId && isFirstVisit) {
+      console.log(`✅ Adding "${pageId}" to visited set...`);
+      game.visited.add(pageId);
+      game.saveVisited();
+      console.log(`✅ After save, visited set:`, [...game.visited]);
+    } else {
+      console.log(`⏭️ Page "${pageId}" already visited - skipping counter update`);
+    }
+
+    // ALWAYS process page effects (items, unlocks, etc.) - not just on first visit
+    if (pageId) {
+      const currentPage = pages.find(p => p.filename === pageId);
+      
+      // Only add items, remove items, and handle unconditional unlocks on FIRST visit
+      if (isFirstVisit) {
+        game.processPageEffects(pageId);
+      } 
+      // But ALWAYS check for conditional unlocks (like keys)
+      else if (currentPage?.unlocksIfHasItem) {
+        console.log(`🔍 Checking conditional unlocks for "${pageId}" (repeat visit)...`);
+        
+        const { itemId, unlocks } = currentPage.unlocksIfHasItem;
+        let eventMessages = [];
+        
+        if (game.inventory.includes(itemId)) {
+          console.log(`🔑 Player has ${itemId}, checking conditional unlocks...`);
+          
+          unlocks.forEach(filename => {
+            const pageToUnlock = pages.find(p => p.filename === filename);
+            if (pageToUnlock && pageToUnlock.initialLocked) {
+              pageToUnlock.initialLocked = false;
+              localStorage.setItem(game.getKey(`locked_${pageToUnlock.filename}`), "false");
+              
+              const itemName = items[itemId]?.name || itemId;
+              eventMessages.push(`🔓 You used ${itemName} to unlock ${pageToUnlock.title}!`);
+              console.log(`✅ Unlocked ${filename} using ${itemId}`);
+            }
+          });
+          
+          if (eventMessages.length > 0) {
+            game.showEventBox(eventMessages);
+            game.updateLinkStates(); // Update the UI to remove locks
+          }
+        }
+      }
+    }
+
+    game.updateAllUI();
+    game.setupEventListeners();
+  });
+</script>
+
+<style>
+  .event-box {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<div id="visit-tracker">
+  <!-- Visit tracker content, if any -->
+</div>

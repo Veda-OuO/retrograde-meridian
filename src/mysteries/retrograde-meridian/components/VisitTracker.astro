@@ -1,0 +1,336 @@
+---
+// filepath: c:\Users\gregw\retrograde-meridian\src\components\VisitTracker.astro
+import { pages, items } from '../data/pages.js';
+
+export interface Props {
+  pageId: string;
+}
+
+const { pageId } = Astro.props;
+---
+
+<script define:vars={{ pageId, pages, items }}>
+  // This script now correctly receives item data with full paths from pages.js
+  // and relies on the corrected href attributes from Sidebar.astro for navigation.
+  // No direct path changes are needed within this script itself.
+
+  class GameState {
+    constructor() {
+      this.visited = new Set();
+      this.inventory = [];
+      this.examUnlocked = false;
+      this.whodunitUnlocked = false;
+      this.timeReachedZero = false;
+      this.loadState();
+    }
+
+    loadState() {
+      try {
+        const storedVisited = localStorage.getItem("visitedPages");
+        if (storedVisited) this.visited = new Set(JSON.parse(storedVisited));
+
+        const storedInventory = localStorage.getItem("inventory");
+        if (storedInventory) this.inventory = JSON.parse(storedInventory);
+
+        this.examUnlocked = localStorage.getItem("examUnlocked") === "true";
+        this.whodunitUnlocked = localStorage.getItem("whodunitUnlocked") === "true";
+        this.timeReachedZero = localStorage.getItem("timeReachedZero") === "true";
+
+        pages.forEach(page => {
+          if (page.type === 'link') {
+            const lockedState = localStorage.getItem(`locked_${page.filename}`);
+            if (lockedState !== null) page.initialLocked = lockedState === "true";
+          }
+        });
+      } catch (e) {
+        console.error("Error loading game state, resetting.", e);
+        localStorage.clear();
+      }
+    }
+
+    saveVisited() { localStorage.setItem("visitedPages", JSON.stringify([...this.visited])); }
+    saveInventory() { localStorage.setItem("inventory", JSON.stringify(this.inventory)); }
+
+    processPageEffects(pageId) {
+      const currentPage = pages.find(p => p.filename === pageId);
+      if (!currentPage) return;
+      let eventMessages = [];
+
+      if (currentPage.addsItem) {
+        this.inventory.push(currentPage.addsItem);
+        this.saveInventory();
+        eventMessages.push(`Item added: ${items[currentPage.addsItem].name}`);
+      }
+      
+      if (currentPage.addsItems && Array.isArray(currentPage.addsItems)) {
+        currentPage.addsItems.forEach(itemId => {
+          this.inventory.push(itemId);
+          eventMessages.push(`Item added: ${items[itemId].name}`);
+        });
+        this.saveInventory();
+      }
+
+      if (currentPage.removesItem && this.inventory.includes(currentPage.removesItem)) {
+        const index = this.inventory.indexOf(currentPage.removesItem);
+        if (index > -1) this.inventory.splice(index, 1);
+        this.saveInventory();
+        eventMessages.push(`Item used: ${items[currentPage.removesItem].name}`);
+      }
+
+      if (currentPage.unlocksOnVisit) {
+        currentPage.unlocksOnVisit.forEach(filename => {
+          const pageToUnlock = pages.find(p => p.filename === filename);
+          if (pageToUnlock) {
+            pageToUnlock.initialLocked = false;
+            localStorage.setItem(`locked_${pageToUnlock.filename}`, "false");
+            eventMessages.push(`${pageToUnlock.title} unlocked`);
+          }
+        });
+      }
+
+      if (currentPage.locksOnVisit) {
+        currentPage.locksOnVisit.forEach(filename => {
+          const pageToLock = pages.find(p => p.filename === filename);
+          if (pageToLock) {
+            pageToLock.initialLocked = true;
+            localStorage.setItem(`locked_${pageToLock.filename}`, "true");
+            eventMessages.push(`${pageToLock.title} locked`);
+          }
+        });
+      }
+
+      if (pageId === 'birdroom' && this.inventory.includes('closet_key')) {
+        const pre1Page = pages.find(p => p.filename === 'pre1');
+        if (pre1Page && pre1Page.initialLocked) {
+          pre1Page.initialLocked = false;
+          localStorage.setItem(`locked_pre1`, "false");
+          eventMessages.push(`PrE - 1 unlocked! You can now access the Bird Room closet with your key.`);
+        }
+      }
+
+      if (eventMessages.length > 0) {
+        this.showEventBox(eventMessages);
+      }
+    }
+
+    lockUnvisitedRooms() {
+      const criticalPages = ['notes', 'rules', 'intro', 'exam', 'whodunit'];
+      pages.forEach(page => {
+        if (page.type === 'link' && !this.visited.has(page.filename) && !criticalPages.includes(page.filename)) {
+          page.initialLocked = true;
+          localStorage.setItem(`locked_${page.filename}`, "true");
+        }
+      });
+    }
+
+    shouldTabBeLocked(filename) {
+      const neverLockPages = ['notes', 'rules', 'intro'];
+      if (neverLockPages.includes(filename)) return false;
+      if (filename === 'exam') return !this.examUnlocked;
+      if (filename === 'whodunit') return !this.whodunitUnlocked;
+      
+      const page = pages.find(p => p.filename === filename);
+      if (!page) return false;
+      
+      if (page.requiresItem && !this.inventory.includes(page.requiresItem)) return true;
+      if (page.initialLocked === true) return true;
+      if (this.timeReachedZero && !this.visited.has(filename)) return true;
+      
+      return false;
+    }
+
+    updateAllUI() {
+      this.updateCounter();
+      this.updateInventoryDisplay();
+      this.updateLinkStates();
+    }
+
+    updateCounter() {
+      const countedVisited = [...this.visited].filter(filename => {
+        const page = pages.find(p => p.filename === filename);
+        return page && page.counted !== false;
+      });
+      const remainingHours = Math.max(0, 11 - countedVisited.length);
+      const counter = document.getElementById("counter");
+      if (counter) counter.textContent = remainingHours;
+      
+      const counterElement = counter?.parentElement;
+      if (counterElement) {
+        if (remainingHours <= 3) counterElement.style.backgroundColor = '#ff0000';
+        else if (remainingHours <= 6) counterElement.style.backgroundColor = '#ff4500';
+        else counterElement.style.backgroundColor = '#8B0000';
+      }
+      
+      if (remainingHours === 0 && !this.timeReachedZero) {
+        this.timeReachedZero = true;
+        this.examUnlocked = true;
+        localStorage.setItem("timeReachedZero", "true");
+        localStorage.setItem("examUnlocked", "true");
+        this.showEventBox(["Investigation time has run out! The Exam tab is now available."]);
+        this.lockUnvisitedRooms();
+        this.updateLinkStates();
+      }
+    }
+
+    updateInventoryDisplay() {
+      const inventoryGrid = document.getElementById('inventory-grid');
+      if (!inventoryGrid) return;
+      inventoryGrid.innerHTML = '';
+      
+      const itemCounts = {};
+      this.inventory.forEach(itemId => {
+        if (!itemCounts[itemId]) itemCounts[itemId] = 0;
+        itemCounts[itemId]++;
+      });
+      
+      Object.keys(itemCounts).forEach(itemId => {
+        const itemData = items[itemId];
+        const itemCount = itemCounts[itemId];
+        
+        if (itemData && itemData.image) {
+          const itemContainer = document.createElement('div');
+          itemContainer.style.cssText = `padding: 10px 0; width: 100%; text-align: center; position: relative;`;
+          
+          const img = document.createElement('img');
+          img.src = itemData.image; // This now uses the corrected full path from pages.js
+          img.alt = itemData.name;
+          img.className = 'inventory-item';
+          
+          img.style.maxWidth = '120px';
+          img.style.maxHeight = '120px';
+          img.style.width = 'auto';
+          img.style.height = 'auto';
+          img.style.margin = '15px auto';
+          img.style.display = 'block';
+          
+          if (itemCount > 1) {
+            const countBadge = document.createElement('div');
+            countBadge.textContent = itemCount;
+            countBadge.style.cssText = `position: absolute; bottom: 35px; right: calc(50% - 50px); background-color: rgba(0, 0, 0, 0.7); color: white; font-weight: bold; min-width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2px solid white; box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);`;
+            itemContainer.appendChild(img);
+            itemContainer.appendChild(countBadge);
+          } else {
+            itemContainer.appendChild(img);
+          }
+          inventoryGrid.appendChild(itemContainer);
+        }
+      });
+    }
+
+    updateLinkStates() {
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => {
+        const filename = link.getAttribute('data-filename');
+        if (!filename) return;
+        
+        link.classList.remove('visited', 'locked');
+        const existingLock = link.querySelector('.lock-icon');
+        if (existingLock) existingLock.remove();
+
+        if (this.visited.has(filename)) link.classList.add('visited');
+        
+        if (this.shouldTabBeLocked(filename)) {
+          link.classList.add('locked');
+          const lockIcon = document.createElement('span');
+          lockIcon.className = 'lock-icon';
+          lockIcon.innerHTML = ' 🔒';
+          lockIcon.style.color = '#FFD700';
+          link.appendChild(lockIcon);
+        }
+      });
+    }
+    
+    showEventBox(messages) {
+      const mainElement = document.querySelector('.main-content');
+      if (!mainElement) return;
+      
+      const firstTextBox = mainElement.querySelector('.text-box');
+      const eventBox = document.createElement('div');
+      eventBox.className = 'event-box';
+      eventBox.innerHTML = `<h3>Events</h3><ul>${messages.map(msg => `<li>${msg}</li>`).join('')}</ul><button class="close-event-box">Close</button>`;
+      eventBox.style.cssText = `background-color: rgba(139, 0, 0, 0.9); color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; position: relative; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid #ff6b6b; animation: fadeIn 0.5s;`;
+      
+      const closeButton = eventBox.querySelector('.close-event-box');
+      closeButton.style.cssText = `position: absolute; top: 10px; right: 10px; background-color: transparent; color: white; border: 1px solid white; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px;`;
+      
+      if (firstTextBox) firstTextBox.parentNode.insertBefore(eventBox, firstTextBox);
+      else mainElement.prepend(eventBox);
+      
+      closeButton.addEventListener('click', () => {
+        eventBox.style.animation = 'fadeOut 0.5s';
+        setTimeout(() => { if (eventBox.parentNode) eventBox.remove(); }, 500);
+      });
+    }
+
+    setupEventListeners() {
+      window.addEventListener('examCompleted', () => {
+        this.whodunitUnlocked = true;
+        localStorage.setItem('whodunitUnlocked', 'true');
+        this.updateLinkStates();
+      });
+
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const filename = link.getAttribute('data-filename');
+          const page = pages.find(p => p.filename === filename);
+          
+          if (this.shouldTabBeLocked(filename)) {
+            e.preventDefault();
+            if (page && page.requiresItem && !this.inventory.includes(page.requiresItem)) {
+              alert(`This tab is locked. You need the following item to proceed: ${items[page.requiresItem].name}`);
+            } else {
+              alert('This tab is currently locked.');
+            }
+            return false;
+          }
+
+          const sidebar = document.getElementById('sidebar');
+          if (window.innerWidth <= 768 && sidebar) {
+            sidebar.classList.remove('open');
+          }
+        });
+      });
+
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.getElementById('sidebar');
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+      }
+      
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && sidebar && !sidebar.contains(e.target) && menuToggle && !menuToggle.contains(e.target) && sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      });
+      
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && sidebar) sidebar.classList.remove('open');
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const game = new GameState();
+
+    if (pageId && !game.visited.has(pageId)) {
+      game.visited.add(pageId);
+      game.saveVisited();
+      game.processPageEffects(pageId);
+    }
+
+
+      //Remove the lock from the Bird Room closet if the player has the key
+    if (pageId === 'birdroom' && game.inventory.includes('closet_key')) {
+      const pre1Page = pages.find(p => p.filename === 'pre1');
+      if (pre1Page && pre1Page.initialLocked) {
+        pre1Page.initialLocked = false;
+        localStorage.setItem(`locked_pre1`, "false");
+        game.showEventBox([`PrE - 1 unlocked! You can now access the Bird Room closet with your key.`]);
+      }
+    }
+
+        game.updateAllUI();
+    game.setupEventListeners();
+  });
+</script>

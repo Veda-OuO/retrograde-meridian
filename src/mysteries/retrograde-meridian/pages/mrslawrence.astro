@@ -1,0 +1,97 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Mrs. Lawrence" pageId="mrslawrence" mysteryId={mysteryId} backgroundImage="/assets/lawrence.jpg">
+
+  <div class="title">Mrs. Lawrence</div>
+  <div class="text-box">
+    <p>Mrs. Lawrence had just finished stowing the last of the evening's dishes when I approached her in the kitchen. She was a woman whose 60-some years had treated her harshly. Her grey hair was pulled into a taught bun, exposing loose skin on her neck and jaw.</p>
+    <p>&nbsp;</p>
+    <p>I knocked softly on the threshold so as not to startle her.</p>
+    <p>&nbsp;</p>
+    <p>"May I join you, Mrs. Lawrence?"</p>
+    <p>&nbsp;</p>
+    <p>"Oh, yes. Come in. I have just finished cleaning."</p>
+    <p>&nbsp;</p>
+    <p>"What a lovely kitchen."</p>
+    <p>&nbsp;</p>
+    <p>"It is an absolute luxury, isn't it Detective?" Her eyes beamed with pride.</p>
+    <p>&nbsp;</p>
+    <p>"Indeed, it is. All of the finest equipment and so clean, too! I was hoping you had a moment for some questions."</p>
+    <p>&nbsp;</p>
+    <p>She smiled and said, "I do, but I'll need to sit. My knees are not so good these days."</p>
+    <p>&nbsp;</p>
+    <p>We sat at the staff dining table and shared from a plate of cookies that were still warm from the oven.</p>
+    <p>&nbsp;</p>
+    <p>"Were you responsible for tonight's meal, Mrs. Lawrence?"</p>
+    <p>&nbsp;</p>
+    <p>She looked at her feet before answering, a cookie between her limp fingers, "I was."</p>
+    <p>&nbsp;</p>
+    <p>"And what did you serve?"</p>
+    <p>&nbsp;</p>
+    <p>"To the guests? Spring salad, pea soup, baked Cod fillets, and some dinner rolls."</p>
+    <p>&nbsp;</p>
+    <p>"The staff ate separately?"</p>
+    <p>&nbsp;</p>
+    <p>"Well, we never share food with Mr. Range or his guests, but the staff dinner has been delayed, Detective; we have not eaten. Miss Barton was such a chore this evening that we didn't get our usual chance. A real pitty. I made fresh bread and my famous chilli stew for us."</p>
+    <p>&nbsp;</p>
+    <p>"Were Thomas and Flora around to assist with the dinner service?"</p>
+    <p>&nbsp;</p>
+    <p>"Yes, Flora is normally busy cleaning, but she volunteered tonight. They were of great help. Things are always hard to manage when Mr. Range has guests, but Miss Barton has been particularly cumbersome. I was relieved when Thomas said we had only three diners this evening."</p>
+    <p>&nbsp;</p>
+    <p>"Yes, and all three seem to have fallen ill. What did Thomas and Flora do while you were preparing the meals?"</p>
+    <p>&nbsp;</p>
+    <p>"Thomas was, of course, dashing between the kitchen and dining room, as is his job. And Flora helped me in the kitchen– though, she had to leave at one point."</p>
+    <p>&nbsp;</p>
+    <p>"Do you know where she went?"</p>
+    <p>&nbsp;</p>
+    <p>"No."</p>
+    <p>&nbsp;</p>
+    <p>"Did you leave the kitchen tonight for any reason?"</p>
+    <p>&nbsp;</p>
+    <p>"Absolutely not, I was much too busy….. well, wait, yes. Actually, detective, a very strange thing happened: the delivery bell at the side door rang just before I was set to plate the soup. I didn't remember ordering anything, but I went to check anyway."</p>
+    <p>&nbsp;</p>
+    <p>"What did you find?"</p>
+    <p>&nbsp;</p>
+    <p>"Nothing. I opened the door, and there was no package or delivery person, so I went back to my duties. Thankfully, Flora was keeping an eye on the stove when I returned. Nothing burned while I was gone, and dinner was still served on time, I assure you."</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>"Very good. Do you know which guests attended dinner and what they ate?"</p>
+    <p>&nbsp;</p>
+    <p>"No, I only hear of the complaints. Thomas might know, but the dining room is not my place."</p>
+    <p>&nbsp;</p>
+    <p>"I see. And where do you stay Mrs. Lawrence?"</p>
+    <p>&nbsp;</p>
+    <p>"I'm in the servant's wing. Flora <strong>(3 - P)</strong> and I <strong>(4 - P)</strong> are neighbors. Thomas's old room is also next to us, but Mr. Range recently moved him into the Winter Suite on the second floor. <strong>(7 - P)</strong>."</p>
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>

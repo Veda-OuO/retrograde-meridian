@@ -1,0 +1,58 @@
+---
+import Layout from './_layout.astro';
+
+interface Props {
+  mysteryId: string;
+}
+const { mysteryId } = Astro.props;
+---
+
+<Layout title="Ivory Suite" pageId="ivorysuite" mysteryId={mysteryId} backgroundImage="/assets/ivorysuite.jpg">
+
+  <div class="title">Ivory Suite</div>
+  <div class="text-box">
+    <p>The door to the Ivory Suite was narrow and curved along the top edge, reminding me of something out of a fairy tale. After looking up and down the corridor, I twisted the silver handle and slipped inside.</p>
+    <p>&nbsp;</p>
+    <p>Predictably, the room was just as graceful and well-kempt as Miss Barton herself. The polished marble flooring sparkled in the moonlight, while a bundle of pink Lilacs on the nightstand filled the room with the scent of spring. On the bed, half a dozen pillows had been precisely arranged above the tasseled nightgown resting neatly in the center of the bed.</p>
+    <p>&nbsp;</p>
+    <p>The velvet curtains huddled to either side of a circular window looking down over the mansion's front lawn. I flicked on the overhead lights and checked the bathroom. The counter was bare except for a pink toothbrush and a tortoise bone comb.</p>
+    <p>&nbsp;</p>
+    <p>Returning to the living area, the mirror caught my attention. Its bulky frame had been angled to face the center of the room and it was so large that it devoured the nook to the left of the window. The inner pane of glass had been shattered into a thousand twinkling pieces. Shards littered the floor on the opposite side of the bed from where I stood.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>But, despite the damage, the sturdy frame seemed in perfect condition. Bits and pieces crunched under my feet as I moved in for a closer inspection. Crafted from silver, and polished to a shine, the ornate border took the form of a slender dragon, its body weaving gracefully around the entire perimeter. A hundred spikes on the dragon&rsquo;s back and its mouth full of teeth were sharp to the touch.</p>
+    <p>&nbsp;</p>
+    <p>Leaning over the frame, I looked into the chasm behind where the glass had once been. In the lower corner, a small metal compartment caught my eye. It had been pried open with some sort of tool. Lowering my head, I studied the haphazard welds that anchored the box to the frame and confirmed it to be empty.</p>
+    <p>&nbsp;</p>
+    <p>The thought of Marla smashing a mirror didn&rsquo;t sit right with me, so I made another sweep of the room, rifling through the curved dresser&rsquo;s white drawers and small writing desk. But her clothes were neatly folded, and I found nothing out of the ordinary.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Before leaving, I pulled her empty suitcase down from a shelf in the closet. In an outer pocket I found a letter written on stiff paper:&nbsp;</p>
+  </div>
+  
+  <div class="bottom-image">
+    <img src="/assets/ISNote.jpg" alt="Evidence image">
+  </div>
+</Layout>
+
+<style>
+  .title {
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 40px;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 30px;
+    }
+  }
+</style>
