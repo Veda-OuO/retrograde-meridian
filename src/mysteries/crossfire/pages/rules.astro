@@ -129,12 +129,14 @@ const { mysteryId } = Astro.props;
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const mysteryId = 'crossfire'; // This page is part of Crossfire mystery
+  
   const solveCaseButton = document.getElementById('solveCase');
   if (solveCaseButton) {
     solveCaseButton.addEventListener('click', () => {
       if (confirm('Are you sure you want to solve the case now? This will prevent you from exploring further leads and take you straight to the exam page.')) {
-        localStorage.setItem("timeReachedZero", "true");
-        localStorage.setItem("examUnlocked", "true");
+        localStorage.setItem(`${mysteryId}_timeReachedZero`, "true");
+        localStorage.setItem(`${mysteryId}_examUnlocked`, "true");
         alert('The Exam is now unlocked. You can proceed to submit your answers.');
         window.location.reload();
       }
@@ -145,8 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (resetCaseButton) {
     resetCaseButton.addEventListener('click', () => {
       if (confirm('Are you sure you want to reset this case? All your progress will be lost.')) {
-        localStorage.clear();
-        window.location.href = `/retrograde-meridian/intro`;
+        // Clear only Crossfire-specific localStorage
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith(`${mysteryId}_`)) {
+            localStorage.removeItem(key);
+          }
+        });
+        // Redirect to Crossfire intro
+        window.location.href = `/crossfire/intro`;
       }
     });
   }
